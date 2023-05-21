@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.navStyle {
+  background-color: white;
+  height: 4rem;
+  box-shadow: 0 0 10px rgb(110, 110, 110);
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+.navStyle > .navContent {
+  position: absolute;
+  max-width: 1280px;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  font-family: "Montserrat", sans-serif;
+  gap: 2rem;
+}
+.navLink {
+  text-decoration: none;
+  color: #a4a4a4;
+  position: relative;
+  font-weight: 600;
+}
+.navCartNum {
+  position: absolute;
+  font-size: 8px;
+  transform: translate(-2px, -2px);
+  background-color: red;
+  border-radius: 50%;
+  font-weight: bold;
+  width: 13px;
+  height: 13px;
+  text-align: center;
+  border: white 1px solid;
+}
+.logo {
+  color: #a4a4a4;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+.spacer {
+  /* width: 60%; */
+  flex-grow: 1;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.icons {
+  font-size: 1.3rem;
+}

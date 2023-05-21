@@ -1,31 +1,46 @@
 import { useState } from "react";
+import "./home.css";
 
 export const Home = () => {
-  //login
+  const [categories, setCotegories] = useState([]);
 
-  const getData = async () => {
+  const getCategory = async () => {
     try {
-      const creds = {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
-      };
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify(creds),
+      const res = await fetch("/api/categories", {
+        method: "GET",
       });
-
-      const { encodedToken } = await res.json();
-      localStorage.setItem("encodedToken", encodedToken);
+      const { categories } = await res.json();
+      setCotegories(categories);
     } catch (e) {
       console.error(e);
     }
   };
 
-  useState(getData, []);
+  useState(getCategory, []);
 
   return (
-    <div>
-      <button>Get DatA</button>
+    <div className="home">
+      <div className="homepage">
+        <div className="categoryList">
+          <ul className="categories">
+            {categories.map((category) => {
+              const { categoryName, description } = category;
+              return (
+                <li className="category">
+                  <p className="categoryLabel">{categoryName}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="mainImage">
+          <img className="image" src="" alt="" />
+        </div>
+        <div className="collections">
+          <div className="wintercollection collection"></div>
+          <div className="summerCollection collection"></div>
+        </div>
+      </div>
     </div>
   );
 };
