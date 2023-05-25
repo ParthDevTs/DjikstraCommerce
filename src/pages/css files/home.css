@@ -1,12 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 * {
   margin: 0;
   padding: 0;
+}
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+link {
+  text-decoration: none;
 }
 .home {
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .homepage {
   background-color: #f6f7f6;
@@ -23,7 +33,6 @@
 }
 
 .categories {
-  margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr;
   list-style: none;
@@ -35,13 +44,36 @@
   box-sizing: border-box;
   display: grid;
   place-content: center;
-  max-height: 10rem;
-  width: 80%;
-  padding: 5rem;
+  height: 10rem;
+  width: 10rem;
+
   background-color: #c4c4c3;
   place-self: center;
   position: relative;
+  z-index: 1;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.4rem rgb(150, 150, 150);
+  font-size: 0.8rem;
+
+  transition: all 200ms ease-in-out;
 }
+.hoverText {
+  color: transparent;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 0.5rem black;
+}
+.hero-image {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  transition: all 50ms ease-in-out;
+}
+
 .categoryLabel {
   position: absolute;
   top: 50%;
@@ -49,19 +81,65 @@
   width: 100%;
   transform: translate(-50%, -50%);
   background: white;
+  text-align: center;
+  z-index: 2;
+  transition: all 200ms ease-in-out;
 }
 
+.category:hover {
+  background-color: #8b8b8b;
+  z-index: 1;
+}
+.category:hover > .categoryLabel {
+  background: #8b8b8b;
+  color: transparent;
+  z-index: 1;
+}
+.category:hover > .hoverText {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  word-wrap: break-word;
+}
+.category:hover > .hero-image {
+  z-index: -1;
+  display: none;
+}
 .mainImage {
+  display: grid;
   grid-area: mainImage;
   max-height: 100%;
   width: 100%;
   place-items: center;
   margin: 2rem 0 2rem 0;
+  background-color: #c4c4c3;
+  position: relative;
+  z-index: 1;
 }
+.mainImage:before {
+  content: "Hottest Deals on Electronics";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  background-color: #30303060;
+  color: white;
+}
+
 .image {
   height: 100%;
   width: 100%;
-  background-color: #c4c4c3;
 }
 .collections {
   grid-area: collection;
@@ -111,12 +189,16 @@
   .categoryLabel {
     font-size: 1rem;
   }
+
+  .mainImage:before {
+    font-size: 3rem;
+  }
 }
 
 @media (min-width: 1280px) {
   .homepage {
     max-width: 1280px;
-    padding: 8rem;
+    padding: 3rem;
   }
   .collections {
     grid-template-columns: 1fr 1fr;
@@ -137,4 +219,21 @@
   .categoryLabel {
     font-size: 1.5rem;
   }
+
+  .mainImage:before {
+    font-size: 5rem;
+  }
+}
+
+.spinner-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.329);
+  display: grid;
+  place-content: center;
 }

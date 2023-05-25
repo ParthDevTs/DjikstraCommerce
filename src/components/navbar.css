@@ -34,9 +34,9 @@
 }
 .navCartNum {
   position: absolute;
-  font-size: 8px;
+  font-size: 18px;
   transform: translate(-2px, -2px);
-  background-color: red;
+  background-color: white;
   border-radius: 50%;
   font-weight: bold;
   width: 13px;

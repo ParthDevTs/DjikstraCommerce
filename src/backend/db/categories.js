@@ -8,20 +8,20 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    categoryName: "iPhone",
+    description: "The looongest battery life of any iPhone. Ever",
+    url: "https://upload.wikimedia.org/wikipedia/commons/3/32/IPhone_X_vector.svg",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "iPad",
+    description: "Lovable. Drawable. Magical",
+    url: "https://img.freepik.com/free-vector/digital-device-mockup_53876-89357.jpg?w=740&t=st=1685013849~exp=1685014449~hmac=a67e76008cb7f27138fe3d895e638599434b24fadbef5cfbb951f2b9a5d79f10",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "Galaxy Tab",
+    description: "Space for limitless possibilities",
+    url: "https://upload.wikimedia.org/wikipedia/commons/3/32/IPhone_X_vector.svg",
   },
 ];
