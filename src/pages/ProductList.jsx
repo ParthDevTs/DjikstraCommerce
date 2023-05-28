@@ -21,7 +21,7 @@ export const ProductList = () => {
         setLocalproductList(data.products);
         setProductList(data.products);
       });
-    setShowLoader(false);
+    await setShowLoader(false);
   };
 
   const filterProductList = async (category) => {
