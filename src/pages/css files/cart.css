@@ -49,6 +49,7 @@
 
   height: calc(100vh - 2rem);
   width: 100%;
+  position: relative;
 }
 
 .cartProduct {
@@ -169,4 +170,17 @@
 .actionItems > .wishlistbtn > .wishlistLink:hover {
   background-color: #ffe500;
   transform: scale(1.1);
+}
+
+.spinner-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.329);
+  display: grid;
+  place-content: center;
 }

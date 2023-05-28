@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { ProductCard } from "../components/productCard";
 import { Dna } from "react-loader-spinner";
+
 import "./css files/productList.css";
+import { useParams } from "react-router-dom";
 
 export const ProductList = () => {
   const { setProductList, productList } = useCart();
   const [localproductList, setLocalproductList] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
+
+  const { filter } = useParams();
 
   const getData = async () => {
     setShowLoader(true);
@@ -22,7 +26,6 @@ export const ProductList = () => {
 
   const filterProductList = async (category) => {
     setShowLoader(true);
-
     if (category !== "All") {
       await fetch("/api/products")
         .then((response) => response.json())
@@ -37,10 +40,17 @@ export const ProductList = () => {
     setShowLoader(false);
   };
 
-  useEffect(() => {
+  function getFilter(selectedFilter = "All") {
+    filterProductList(selectedFilter);
+  }
+
+  const useEffectHandler = () => {
     getData();
+    getFilter(filter);
     return () => {};
-  }, []);
+  };
+
+  useEffect(useEffectHandler, []);
 
   const filterHandler = (event) => {
     let selectedCategory = event.target.value;
@@ -52,7 +62,11 @@ export const ProductList = () => {
         <div className="filters">
           <div className="filtersList">
             <p className="filterHeading">Category</p>
-            <select onChange={filterHandler} className="categorySelection">
+            <select
+              defaultValue={filter}
+              onChange={filterHandler}
+              className="categorySelection"
+            >
               <option className="filterListOptions" value="All">
                 All
               </option>
@@ -84,7 +98,7 @@ export const ProductList = () => {
             </div>
           )}
           {localproductList.map((item) => (
-            <ProductCard key={item.id} item={item} />
+            <ProductCard key={item._id} item={item} />
           ))}
         </ul>
       </div>

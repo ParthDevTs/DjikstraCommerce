@@ -8,6 +8,7 @@ import { Wishlist } from "./pages/wishlist";
 import { ProductDetails } from "./pages/productDetials";
 import { Login } from "./pages/login";
 import { ProductList } from "./pages/ProductList";
+import { RequiresAuth } from "./components/RequiresAuth";
 
 function App() {
   return (
@@ -24,8 +25,26 @@ function App() {
             path="/productList/:productId"
             element={<ProductDetails />}
           ></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/wishlist" element={<Wishlist />}></Route>
+          <Route
+            path="/productList/filters/:filter"
+            element={<ProductList />}
+          ></Route>
+          <Route
+            path="/cart"
+            element={
+              <RequiresAuth>
+                <Cart />
+              </RequiresAuth>
+            }
+          ></Route>
+          <Route
+            path="/wishlist"
+            element={
+              <RequiresAuth>
+                <Wishlist />
+              </RequiresAuth>
+            }
+          ></Route>
           <Route path="/mockman" element={<Mockman />} />
           <Route path="/login" element={<Login />} />
         </Routes>

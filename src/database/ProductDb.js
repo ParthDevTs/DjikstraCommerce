@@ -4,6 +4,21 @@ const phonesDB = {
   data: [
     {
       id: uuid(),
+      name: "iPhone 14",
+      price: 91000,
+      memory: 128,
+      currency: "INR",
+      category: "Phones",
+      details: `
+        128 GB ROM
+        15.49 cm (6.1 inch) Liquid Retina HD Display
+        12MP + 12MP | 12MP Front Camera
+        A13 Bionic Chip Processor`,
+      imgUrl:
+        "https://img.freepik.com/premium-vector/smartphone-mockup-modern-frame-less-smartphones-generic-cell-phone-device-side_625492-759.jpg?w=740",
+    },
+    {
+      id: uuid(),
       name: "iPhone 11",
       price: 51000,
       memory: 64,

@@ -1,6 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
-import phonesDB from "../database/ProductDb";
 
 export const CartContext = createContext(null);
 
@@ -8,79 +7,170 @@ export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [wishlist, setWishList] = useState([]);
   const [productList, setProductList] = useState([]);
+  const [showLoader, setShowLoader] = useState(false);
 
-  const filterCart = (item) => {
-    return cartProducts.filter((product) => product.id !== item.id);
+  const [wishListCounter, setWishListCounter] = useState();
+
+  //New Backend Functions:
+  const getWishlist = async () => {
+    setShowLoader(true);
+    const header = {
+      authorization: localStorage.getItem("encodedToken"),
+    };
+    await fetch("/api/user/wishlist", {
+      method: "GET",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setWishList(data.wishlist);
+      })
+      .catch((e) => console.error(e));
+    setShowLoader(false);
   };
-  const filterWishlist = (item) => {
-    return wishlist.filter((product) => product.id !== item.id);
-  };
-  const removeFromCart = (item) => {
-    let filtereedCart = filterCart(item);
-    setCartProducts(filtereedCart);
-  };
-  const updateCart = (item) => {
-    if (cartProducts.find((product) => product.id === item.id) === undefined) {
-      setCartProducts((cart) => [...cartProducts, { ...item, quantity: 1 }]);
-    } else {
-      let newArray = cartProducts.map((product) =>
-        product.id === item.id
-          ? { ...item, quantity: product.quantity + 1 }
-          : product
-      );
-      setCartProducts(newArray);
+
+  const addToWishlist = async (item) => {
+    if (localStorage.getItem("encodedToken")) {
+      const header = {
+        authorization: localStorage.getItem("encodedToken"),
+      };
+      let reqBody = { product: item };
+      await fetch("/api/user/wishlist", {
+        method: "POST",
+        headers: header,
+        body: JSON.stringify(reqBody),
+      })
+        .then((res) => res.json())
+        .then(async (data) => {
+          setWishList(await data.wishlist);
+        });
     }
   };
 
-  const filterProductList = (category) => {
-    if (category !== "All") {
-      setProductList(
-        productList.filter((product) => product.category === category)
-      );
+  const removeFromWishlist = async (item) => {
+    const header = {
+      authorization: localStorage.getItem("encodedToken"),
+    };
+    await fetch(`/api/user/wishlist/${item._id}`, {
+      method: "DELETE",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then(async (data) => {
+        console.log(await data);
+        setWishList(await data.wishlist);
+      });
+  };
+
+  const getCart = async () => {
+    const header = {
+      authorization: localStorage.getItem("encodedToken"),
+    };
+    setShowLoader(true);
+    await fetch("/api/user/cart", {
+      method: "GET",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCartProducts(data.cart);
+      })
+      .catch((e) => console.error(e));
+    setShowLoader(false);
+  };
+
+  const createNewCartProd = async (item, header) => {
+    let reqBody = { product: item };
+    await fetch("/api/user/cart", {
+      method: "POST",
+      headers: header,
+      body: JSON.stringify(reqBody),
+    })
+      .then((res) => res.json())
+      .then(async (data) => {
+        setCartProducts(await data.cart);
+        console.log(data);
+      });
+  };
+
+  const updateCartItem = async (item, header, action) => {
+    let reqBody = {};
+    if (action === "increment") {
+      reqBody = { action: { type: "increment" } };
     } else {
-      setProductList(productList);
+      reqBody = { action: { type: "decrement" } };
+    }
+    await fetch(`/api/user/cart/${item._id}`, {
+      method: "POST",
+      headers: header,
+      body: JSON.stringify(reqBody),
+    })
+      .then((res) => res.json())
+      .then(async (data) => {
+        setCartProducts(await data.cart);
+        console.log(data);
+      });
+  };
+
+  const addToCart = async (item) => {
+    if (localStorage.getItem("encodedToken")) {
+      const header = {
+        authorization: localStorage.getItem("encodedToken"),
+      };
+      const prodInList = cartProducts.find((product) => product.id === item.id);
+
+      if (prodInList === undefined) {
+        createNewCartProd(item, header);
+      } else {
+        updateCartItem(item, header, "increment");
+      }
     }
   };
 
-  const addToWishlist = (item) => {
-    if (wishlist.find((product) => product.id === item.id) === undefined) {
-      setWishList((cart) => [...wishlist, { ...item, quantity: 1 }]);
-    } else {
-      let newArray = wishlist.map((product) =>
-        product.id === item.id
-          ? { ...item, quantity: product.quantity + 1 }
-          : product
-      );
-      setWishList(newArray);
-    }
+  const removeFromCart = async (item) => {
+    const header = {
+      authorization: localStorage.getItem("encodedToken"),
+    };
+    await fetch(`/api/user/cart/${item._id}`, {
+      method: "DELETE",
+      headers: header,
+    })
+      .then((res) => res.json())
+      .then(async (data) => {
+        setCartProducts(await data.cart);
+      });
   };
 
-  const removeFromWishlist = (item) => {
-    let filtereedWishlist = filterWishlist(item);
-    setWishList(filtereedWishlist);
+  const resetCounters = () => {
+    setWishList([]);
+    setCartProducts([]);
   };
+  useEffect(() => {
+    const updateCounter = () => {
+      setWishListCounter(wishlist.reduce((total, curr) => total + 1, 0));
+    };
 
-  const itemsNum = cartProducts.reduce(
-    (total, curr) => total + curr.quantity,
-    0
-  );
-  const wishlistNum = wishlist.reduce((total, curr) => total + 1, 0);
+    updateCounter();
+  }, [wishlist]);
 
   return (
     <CartContext.Provider
       value={{
-        updateCart,
         cartProducts,
         removeFromCart,
         addToWishlist,
         wishlist,
         removeFromWishlist,
-        productList,
-        filterProductList,
         setCartProducts,
-        itemsNum,
-        wishlistNum,
+        setWishList,
+        wishListCounter,
+        getWishlist,
+        getCart,
+        addToCart,
+        resetCounters,
+        productList,
         setProductList,
+        showLoader,
       }}
     >
       {children}

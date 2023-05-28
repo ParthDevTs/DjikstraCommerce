@@ -17,7 +17,7 @@ export const Home = () => {
       });
       const { categories } = await res.json();
       setCotegories(categories);
-      setShowLoader(false);
+      await setShowLoader(false);
     } catch (e) {
       console.error(e);
     }
@@ -38,8 +38,8 @@ export const Home = () => {
                 <Dna
                   className="spinner"
                   visible={true}
-                  height="50"
-                  width="50"
+                  height="100"
+                  width="100"
                   ariaLabel="dna-loading"
                   wrapperStyle={{}}
                   wrapperClass="dna-wrapper"
@@ -50,8 +50,11 @@ export const Home = () => {
               const { categoryName, description, url } = category;
               return (
                 <li
+                  key={categoryName}
                   className="category"
-                  onClick={() => navigate("/productList")}
+                  onClick={() =>
+                    navigate(`/productList/filters/${categoryName}`)
+                  }
                 >
                   <p className="categoryLabel">{categoryName}</p>
                   <p className="hoverText">{description} &#x2192;</p>

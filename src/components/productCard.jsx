@@ -3,22 +3,22 @@ import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 export const ProductCard = ({ item }) => {
-  const { updateCart, addToWishlist, wishlist, removeFromWishlist } = useCart();
-  const { id, name, price, category, imgUrl } = item;
-  const [addToCart, setAddToCart] = useState("Add To Cart");
+  const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
+  const { _id, name, price, category, imgUrl } = item;
+  const [addToCartLabel, setAddToCartLabel] = useState("Add To Cart");
 
   let disabledWishlist =
-    wishlist.find((product) => product.id === item.id) !== undefined;
+    wishlist.find((product) => product._id === item._id) !== undefined;
 
   const togglewishlist = () => {
     !disabledWishlist ? addToWishlist(item) : removeFromWishlist(item);
   };
 
   const addToCartHandler = () => {
-    setAddToCart("Added ✓");
-    updateCart(item);
+    setAddToCartLabel("Added ✓");
+    addToCart(item);
     const timer = setTimeout(() => {
-      setAddToCart("Add To Cart");
+      setAddToCartLabel("Add To Cart");
     }, 1000);
     return () => clearTimeout(timer);
   };
@@ -33,13 +33,13 @@ export const ProductCard = ({ item }) => {
           style={{ fontWeight: "bold", fontSize: "1rem" }}
         >{`Rs. ${price}`}</span>
         <span style={{ color: "#2874f0", fontSize: "0.8rem" }}>{category}</span>
-        <Link className="infoLink" to={`/productList/${id}`}>
+        <Link className="infoLink" to={`/productList/${_id}`}>
           &#9432; more info
         </Link>
       </div>
       <footer>
         <button onClick={addToCartHandler} className="addToCartBtn btn">
-          {addToCart}
+          {addToCartLabel}
         </button>
         <button
           style={{

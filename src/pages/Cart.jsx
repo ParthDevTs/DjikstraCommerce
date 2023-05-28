@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { Dna } from "react-loader-spinner";
 import "./css files/cart.css";
 
 export const Cart = () => {
@@ -10,7 +11,13 @@ export const Cart = () => {
     removeFromCart,
     wishlist,
     removeFromWishlist,
+    getCart,
+    showLoader,
   } = useCart();
+
+  useEffect(() => {
+    getCart();
+  }, []);
 
   return (
     <div className="cartPage">
@@ -20,8 +27,7 @@ export const Cart = () => {
           <p className="totalValue numbers">
             {`Rs.
             ${cartProducts.reduce(
-              (totalValue, { price, quantity }) =>
-                totalValue + price * quantity,
+              (totalValue, { price, qty }) => totalValue + price * qty,
               0
             )}`}
           </p>
@@ -35,8 +41,21 @@ export const Cart = () => {
         </div>
         <div>
           <ul className="cartList">
+            {showLoader && (
+              <div className="spinner-box">
+                <Dna
+                  className="spinner"
+                  visible={true}
+                  height="100"
+                  width="100"
+                  ariaLabel="dna-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="dna-wrapper"
+                />
+              </div>
+            )}
             {cartProducts.map((product) => {
-              const { id, name, price, quantity, imgUrl, details } = product;
+              const { _id, name, price, qty, imgUrl, details } = product;
               let disabledWishlist =
                 wishlist.find((item) => item.id === product.id) !== undefined;
               const togglewishlist = () => {
@@ -45,15 +64,15 @@ export const Cart = () => {
                   : removeFromWishlist(product);
               };
               return (
-                <li className="cartProduct" key={id}>
+                <li className="cartProduct" key={_id}>
                   <img src={imgUrl} alt="phoneImg" />
                   <div className="content">
                     <h3>{name}</h3>
-                    <p className="numbers">QTY: {quantity}</p>
+                    <p className="numbers">QTY: {qty}</p>
                   </div>
                   <div className="specs">{details}</div>
                   <div className="Link">
-                    <Link className="infoLink" to={`/productList/${id}`}>
+                    <Link className="infoLink" to={`/productList/${_id}`}>
                       Product Info
                     </Link>
                   </div>
