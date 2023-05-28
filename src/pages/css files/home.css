@@ -76,6 +76,10 @@ link {
   height: 100%;
   width: 100%;
   transition: all 100ms cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 0.5rem;
+}
+.hero-image > .image {
+  border-radius: 0.5rem;
 }
 
 .categoryLabel {
@@ -114,6 +118,7 @@ link {
 .category:hover > .hero-image {
   z-index: -1;
   display: none;
+  border-radius: 0.5rem;
 }
 .mainImage {
   display: grid;

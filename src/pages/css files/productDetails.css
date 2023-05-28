@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&display=swap");
 .productDetailPage {
   position: relative;
   min-height: calc(100vh - 5rem);
@@ -8,15 +9,13 @@
   top: 0%;
   left: 50%;
   width: 100%;
-  height: 100%;
   transform: translate(-50%);
   max-width: 1280px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  min-height: calc(100vh - 3rem);
-  /* padding: 1rem; */
+  min-height: calc(100vh - 5rem);
   gap: 1rem;
   background-color: white;
 }
@@ -33,6 +32,7 @@
   justify-content: center;
   flex-grow: 1;
   padding: 5rem;
+  gap: 2rem;
 }
 
 .detailsWindow > .actionButton {
@@ -41,7 +41,7 @@
   flex-direction: row;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
   flex-basis: 30%;
 }
 
@@ -58,6 +58,10 @@
 
 .detailsWindow > h1 {
   background: transparent;
+}
+
+.detailsWindow > p {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 .spinner-box {
   position: absolute;

@@ -24,4 +24,10 @@ export const categories = [
     description: "Space for limitless possibilities",
     url: "https://upload.wikimedia.org/wikipedia/commons/3/32/IPhone_X_vector.svg",
   },
+  {
+    _id: uuid(),
+    categoryName: "IEMs",
+    description: "Music as the Artist Intended.",
+    url: "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Moondrop-Blessing-3-02.jpg?v=1681201798&width=800",
+  },
 ];

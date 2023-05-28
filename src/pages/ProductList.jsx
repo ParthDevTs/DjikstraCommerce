@@ -79,6 +79,9 @@ export const ProductList = () => {
               <option className="filterListOptions" value="Galaxy Tab">
                 Galaxy Tab
               </option>
+              <option className="filterListOptions" value="IEMs">
+                IEMs
+              </option>
             </select>
           </div>
         </div>

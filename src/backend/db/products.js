@@ -175,4 +175,48 @@ export const products = [
     imgUrl:
       "https://www.aptronixindia.com/media/catalog/product/cache/31f0162e6f7d821d2237f39577122a8a/1/1/11-inch128gbipadprowi-ficelluar-spacegrey_1.png",
   },
+  {
+    _id: uuid(),
+    name: "MoonDrop Blessings 3",
+    price: 29990,
+    memory: null,
+    currency: "INR",
+    category: "IEMs",
+    details: `Moondrop has reinvented the classic Blessing series with the introduction of Blessing 3. It features dual 10mm dynamic drivers and four balanced armature driver setups. There are dedicated dual-balanced armature drivers for the mids and dual for the highs making the performance even more refined and lifelike. By utilising cutting-edge 3D printing, The Blessing 3 maintains the physical frequency division architecture of earlier iterations. It incorporates a brand-new Horizontally-Opposed Double-Dynamic bass driver module that offers spectacular dynamic range and less dynamic nonlinear distortion than earlier models. The continuity and smoothness of the mid-highs have been further refined by improved hybrid frequency division implementation, ensuring ultra-high detail. A brand-new bass module delivers a tight and impactful bass response. The Blessing series' traditional hybrid triple-frequency division represents the pinnacle of Moondrop's unmatched acoustic knowledge, supported by several tests in the business' measuring laboratory and ensuring high full-band phase consistency.`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Moondrop-Blessing-3-01.jpg",
+  },
+  {
+    _id: uuid(),
+    name: "Moondrop - Variations",
+    price: 49999,
+    memory: null,
+    currency: "INR",
+    category: "IEMs",
+    details: `Utilizing a highly refined 2EST+2BA+1DD Tribrid technology, the Moondrop Variations carries 2 electrostatic drivers, 2 balanced armature drivers and 1 dynamic driver. Also known as an electric electro-acoustic transducer, the dynamic driver fitted in the Variations can generate displacement by energizing the conductor in a constant magnetic field. The balanced armature drivers on the other hand are placed using vibrating ferromagnetism and coil parts that are installed in the magnetic circuit. Therefore when alternating current runs within the coil, it leads to the creation of an alternating magnetic field. The electrostatic drivers, which are also known as capacitive electroacoustic transducers, use the repulsive force of the electrostatic field to produce sound.`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Moondrop-Variations-1160-1160-1.jpg",
+  },
+  {
+    _id: uuid(),
+    name: "KZ - PR1 Pro",
+    price: 8499,
+    memory: null,
+    currency: "INR",
+    category: "IEMs",
+    details: `KZ Acoustics had taken a giant step forward by introducing the KZ PR1 planar in-ear monitor in response to the development of planar technology in IEMs. A team of engineers at KZ wanted to improve the performance of the PR1 even further. This philosophy leads to the birth of the PR1 Pro. The senior tuner team has fine-tuned the three-frequency connection ratio thousands of times, bringing the acoustic crystallisation of the frequency response curve. The KZ PR1 Pro features a high-definition planar driver that captures subtle nuances in your recordings. Even the most discerning audio lovers will be pleased with its mind-blowing sonic performance. The KZ PR1 Pro will leave you dumbfounded with its musical performance and striking appearance right out of the box!.`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-KZ---PR1-Pro---Gallery-06.jpg",
+  },
+  {
+    _id: uuid(),
+    name: "Truthear - HEXA",
+    price: 6999,
+    memory: null,
+    currency: "INR",
+    category: "IEMs",
+    details: `Truthear has designed the HEXA with an efficient driver configuration. The Truthear HEXA hosts one dynamic driver + three balanced armature drivers hybrid structure. The original intention of the design is to achieve a reasonable and efficient configuration. The Truthear HEXA strives to bring you a full-range and accurate representation. A 10mm specialised dynamic driver is responsible for bass. The mature internal magnetic circuit has a flexible polyurethane suspension material and an LCP liquid crystal dome diaphragm, which is the same concept as Truthear ZERO. A unique weighted voice coil reduces natural Resonance Frequency and moderately increases the impedance. This design architecture allows the HEXA to reproduce the punchiest bass and meet the needs of accurate distribution. A composite full-frequency balanced armature driver is responsible for the mids, which matches the frequency band of the specialised dynamic driver. The high-frequency band also conforms to the HRTF characteristics closely. A custom-balanced armature driver, similar to the WBFK series, is responsible for the highs, which allows HEXA to reproduce a smooth, clean high-frequency performance through fine processing. Experience the magic of hybrid drivers and immerse yourself in pure sonic bliss!`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Truthear-HEXA-01.jpg",
+  },
 ];

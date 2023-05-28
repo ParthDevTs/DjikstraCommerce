@@ -38,18 +38,20 @@ export const Login = () => {
               />
             </div>
             <div className="container">
-              <button type="button" className="cancelbtn">
+              {/* <button type="button" className="button cancelbtn ">
                 Cancel
-              </button>
-              <span className="psw">
-                Forgot <a href="#">password?</a>
-              </span>
+              </button> */}
             </div>
           </form>
         )}
-        {!isLoggedIn && <button onClick={loginHandler}>Login &#x2192; </button>}
+        {!isLoggedIn && (
+          <button className="button" onClick={loginHandler}>
+            Login &#x2192;{" "}
+          </button>
+        )}
         {isLoggedIn && (
           <button
+            className="button"
             onClick={() => {
               logOut();
             }}
@@ -61,7 +63,7 @@ export const Login = () => {
       <div className="addressSection">
         <div className="addressBox">
           <h1>Addresses</h1>
-          {!isLoggedIn && <p>Login To see Addresses</p>}
+          {!isLoggedIn && <h3>Login To Continue</h3>}
         </div>
       </div>
     </div>

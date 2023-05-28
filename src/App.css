@@ -329,6 +329,7 @@ link {
   flex-direction: column;
   justify-content: space-between;
   height: 22rem;
+  z-index: 1;
 }
 .productListItem:hover {
   box-shadow: 0 0 1rem rgb(155, 155, 155);
@@ -349,6 +350,7 @@ link {
   width: 100%;
   /* padding: 0.2rem; */
   text-align: center;
+  z-index: 2;
 }
 
 .productListItem > h3 {
@@ -373,6 +375,7 @@ link {
   gap: 0.5rem;
   place-content: center;
   padding: 0 1rem 1rem 1rem;
+  z-index: 2;
 
   margin-top: 1rem;
 }

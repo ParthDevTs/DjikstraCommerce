@@ -11,7 +11,6 @@ export const CartProvider = ({ children }) => {
 
   const [wishListCounter, setWishListCounter] = useState();
 
-  //New Backend Functions:
   const getWishlist = async () => {
     setShowLoader(true);
     const header = {
@@ -145,6 +144,11 @@ export const CartProvider = ({ children }) => {
     setWishList([]);
     setCartProducts([]);
   };
+
+  const loginDataLoad = () => {
+    getWishlist();
+    getCart();
+  };
   useEffect(() => {
     const updateCounter = () => {
       setWishListCounter(wishlist.reduce((total, curr) => total + 1, 0));
@@ -171,6 +175,7 @@ export const CartProvider = ({ children }) => {
         productList,
         setProductList,
         showLoader,
+        loginDataLoad,
       }}
     >
       {children}

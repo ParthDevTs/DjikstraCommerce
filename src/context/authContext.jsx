@@ -7,7 +7,8 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { resetCounters } = useCart();
+  const { resetCounters, loginDataLoad } = useCart();
+
   const logon = async () => {
     const creds = {
       email: "abc@gmail.com",
@@ -22,6 +23,7 @@ export function AuthProvider({ children }) {
         localStorage.setItem("encodedToken", data.encodedToken);
         setIsLoggedIn(true);
         navigate(location?.state?.from?.pathname);
+        loginDataLoad();
       })
       .catch((e) => console.error(e));
   };
@@ -31,6 +33,7 @@ export function AuthProvider({ children }) {
     setIsLoggedIn(false);
     localStorage.removeItem("encodedToken");
   };
+
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, logon, logOut }}>
       {children}

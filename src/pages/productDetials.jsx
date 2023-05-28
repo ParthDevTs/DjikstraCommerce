@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -7,11 +7,12 @@ import "./css files/productDetails.css";
 import { useAuthContext } from "../context/authContext";
 
 export const ProductDetails = () => {
+  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [showLoader, setShowLoader] = useState(false);
   const { productId } = useParams();
   const { isLoggedIn } = useAuthContext();
-  const { addToWishlist, updateCart, wishlist, removeFromWishlist } = useCart();
+  const { addToWishlist, addToCart, wishlist, removeFromWishlist } = useCart();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -32,13 +33,15 @@ export const ProductDetails = () => {
   let disabledWishlist =
     wishlist.find((item) => product._id === item._id) !== undefined;
 
-  const wishlistHandler = () => {
-    !disabledWishlist ? addToWishlist(product) : removeFromWishlist(product);
+  const wishlistHandler = async () => {
+    !disabledWishlist
+      ? await addToWishlist(product)
+      : await removeFromWishlist(product);
   };
 
-  const addToCartHandler = () => {
+  const addToCartHandler = async () => {
     setAddToCart("Added ✓");
-    updateCart(product);
+    await addToCart(product);
     const timer = setTimeout(() => {
       setAddToCart("Add To Cart");
     }, 1000);
@@ -69,9 +72,11 @@ export const ProductDetails = () => {
             <h1>{name}</h1>
             <h2 className="numbers">Rs. {price}</h2>
             <h3>Category: {category}</h3>
-            <h2>
-              Memory: <span style={{ color: "#2874f0" }}>{memory}Gb</span>
-            </h2>
+            {!memory === null ? (
+              <h2>
+                Memory: <span style={{ color: "#2874f0" }}>{memory}Gb</span>
+              </h2>
+            ) : null}
             <p>{details}</p>
             <div className="actionButton">
               <button
@@ -92,13 +97,11 @@ export const ProductDetails = () => {
               >
                 {!disabledWishlist ? "Wish List" : "Wishlisted"}
               </button>
-              <button className="allProdBtn prodAddToCart btn">
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to="/productList"
-                >
-                  All Products
-                </Link>
+              <button
+                onClick={() => navigate("/productList")}
+                className="allProdBtn prodAddToCart btn"
+              >
+                All Products
               </button>
             </div>
           </div>
