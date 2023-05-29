@@ -33,7 +33,7 @@ export const ProductDetails = () => {
   const { name, price, category, details, imgUrl, memory } = product;
 
   let disabledWishlist =
-    wishlist.find((item) => product._id === item._id) !== undefined;
+    wishlist?.find((item) => product._id === item._id) !== undefined;
 
   const wishlistHandler = async () => {
     !disabledWishlist
