@@ -151,7 +151,7 @@ export const CartProvider = ({ children }) => {
   };
   useEffect(() => {
     const updateCounter = () => {
-      setWishListCounter(wishlist.reduce((total, curr) => total + 1, 0));
+      setWishListCounter(wishlist?.reduce((total, curr) => total + 1, 0));
     };
 
     updateCounter();
