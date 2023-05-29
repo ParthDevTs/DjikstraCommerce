@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import { useCart } from "../context/CartContext";
 import { Dna } from "react-loader-spinner";
 import "./css files/productDetails.css";
@@ -13,7 +13,7 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const { isLoggedIn } = useAuthContext();
   const { addToWishlist, addToCart, wishlist, removeFromWishlist } = useCart();
-
+  // eslint-disable-next-line
   useEffect(() => {
     const getProduct = async () => {
       setShowLoader(true);
@@ -23,7 +23,9 @@ export const ProductDetails = () => {
         .catch((e) => console.error(e));
       setShowLoader(false);
     };
+    // eslint-disable-next-line
     getProduct();
+    // eslint-disable-next-line
   }, []);
 
   const [addtocart, setAddToCart] = useState("Add To Cart");

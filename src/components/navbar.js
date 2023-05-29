@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const { cartProducts, wishListCounter } = useCart();
-  const { setIsLoggedIn, isLoggedIn } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
 
   const itemsNum = cartProducts.reduce((total, curr) => total + curr.qty, 0);
 

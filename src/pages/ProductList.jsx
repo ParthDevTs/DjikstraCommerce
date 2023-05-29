@@ -49,7 +49,7 @@ export const ProductList = () => {
     getFilter(filter);
     return () => {};
   };
-
+  // eslint-disable-next-line
   useEffect(useEffectHandler, []);
 
   const filterHandler = (event) => {
