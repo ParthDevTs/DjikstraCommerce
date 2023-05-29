@@ -13,6 +13,7 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const { isLoggedIn } = useAuthContext();
   const { addToWishlist, addToCart, wishlist, removeFromWishlist } = useCart();
+  const { errorMessage, setErrorMessage } = useState(false);
   // eslint-disable-next-line
   useEffect(() => {
     const getProduct = async () => {
@@ -36,18 +37,26 @@ export const ProductDetails = () => {
     wishlist?.find((item) => product._id === item._id) !== undefined;
 
   const wishlistHandler = async () => {
-    !disabledWishlist
-      ? await addToWishlist(product)
-      : await removeFromWishlist(product);
+    if (!isLoggedIn) {
+      setErrorMessage(true);
+    } else {
+      !disabledWishlist
+        ? await addToWishlist(product)
+        : await removeFromWishlist(product);
+    }
   };
 
   const addToCartHandler = async () => {
-    setAddToCart("Added ✓");
-    await addToCart(product);
-    const timer = setTimeout(() => {
-      setAddToCart("Add To Cart");
-    }, 1000);
-    return () => clearTimeout(timer);
+    if (!isLoggedIn) {
+      setErrorMessage(true);
+    } else {
+      setAddToCart("Added ✓");
+      await addToCart(product);
+      const timer = setTimeout(() => {
+        setAddToCart("Add To Cart");
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
   };
 
   return (
@@ -105,6 +114,7 @@ export const ProductDetails = () => {
               >
                 All Products
               </button>
+              {errorMessage && <p>Login To Continue</p>}
             </div>
           </div>
         </div>
