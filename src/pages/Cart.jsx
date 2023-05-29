@@ -28,7 +28,7 @@ export const Cart = () => {
           <h2>Total Amount</h2>
           <p className="totalValue numbers">
             {`Rs.
-            ${cartProducts.reduce(
+            ${cartProducts?.reduce(
               (totalValue, { price, qty }) => totalValue + price * qty,
               0
             )}`}
@@ -56,7 +56,7 @@ export const Cart = () => {
                 />
               </div>
             )}
-            {cartProducts.map((product) => {
+            {cartProducts?.map((product) => {
               const { _id, name, price, qty, imgUrl, details } = product;
               let disabledWishlist =
                 wishlist.find((item) => item.id === product.id) !== undefined;
