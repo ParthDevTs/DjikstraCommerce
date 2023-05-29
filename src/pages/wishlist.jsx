@@ -30,7 +30,7 @@ export const Wishlist = () => {
             />
           </div>
         )}
-        {wishlist.map((product) => {
+        {wishlist?.map((product) => {
           return <ProductCard key={product._id} item={product} />;
         })}
       </div>
