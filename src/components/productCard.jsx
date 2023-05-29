@@ -10,7 +10,7 @@ export const ProductCard = ({ item }) => {
   const navigate = useNavigate();
 
   let disabledWishlist =
-    wishlist.find((product) => product._id === item._id) !== undefined;
+    wishlist?.find((product) => product._id === item._id) !== undefined;
 
   const togglewishlist = () => {
     !disabledWishlist ? addToWishlist(item) : removeFromWishlist(item);

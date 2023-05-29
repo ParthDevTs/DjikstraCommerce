@@ -9,7 +9,7 @@
   place-content: stretch;
   min-height: calc(100vh - 5rem);
   position: relative;
-  gap: 5rem;
+  gap: 1rem;
   padding: 1rem;
   background-color: #f1f3f6;
   position: absolute;
@@ -23,12 +23,11 @@
 }
 
 .mainWindow > .total {
-  width: 100%;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  padding: 2rem;
   justify-content: center;
   max-height: 10rem;
   background-color: white;
@@ -55,12 +54,12 @@
 .cartProduct {
   display: flex;
   flex-direction: row;
-  padding: 1rem;
-
+  padding: 0.4rem;
+  gap: 0.4rem;
   height: 5rem;
   max-width: 900px;
   justify-content: space-between;
-  gap: 1rem;
+
   margin: 0.8rem 0.5rem 0.8rem 0.5rem;
   box-shadow: 0 0 1rem rgb(199, 199, 199);
   border-radius: 0.5rem;
@@ -75,7 +74,7 @@
 .cartProduct > .pricing {
   align-self: center;
   justify-self: center;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
   font-weight: 700;
 }
 
@@ -83,7 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
 }
 
 .cartProduct > .specs {
@@ -188,5 +187,20 @@
 @media only screen and (min-width: 1280px) {
   .mainWindow {
     grid-template-columns: 300px auto;
+    gap: 5rem;
+  }
+  .mainWindow > .total {
+    width: 100%;
+    padding: 2rem;
+  }
+  .cartProduct {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .cartProduct > .pricing {
+    padding-right: 1rem;
+  }
+  .cartProduct > .Link {
+    padding-right: 1rem;
   }
 }
