@@ -6,8 +6,11 @@ import { useCart } from "../context/CartContext";
 
 export const Wishlist = () => {
   const { getWishlist, wishlist, showLoader } = useCart();
+  // eslint-disable-next-line
   useEffect(() => {
+    // eslint-disable-next-line
     getWishlist();
+    // eslint-disable-next-line
   }, []);
 
   return (

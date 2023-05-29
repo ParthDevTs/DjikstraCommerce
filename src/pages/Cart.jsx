@@ -14,9 +14,11 @@ export const Cart = () => {
     getCart,
     showLoader,
   } = useCart();
-
+  // eslint-disable-next-line
   useEffect(() => {
+    // eslint-disable-next-line
     getCart();
+    // eslint-disable-next-line
   }, []);
 
   return (
