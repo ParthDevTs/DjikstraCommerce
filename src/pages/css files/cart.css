@@ -5,7 +5,7 @@
 
 .mainWindow {
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: 1fr;
   place-content: stretch;
   min-height: calc(100vh - 5rem);
   position: relative;
@@ -183,4 +183,10 @@
   background-color: rgba(255, 255, 255, 0.329);
   display: grid;
   place-content: center;
+}
+
+@media only screen and (min-width: 1280px) {
+  .mainWindow {
+    grid-template-columns: 300px auto;
+  }
 }
