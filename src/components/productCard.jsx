@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
+import "./styles/productCard.css";
 
 export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
