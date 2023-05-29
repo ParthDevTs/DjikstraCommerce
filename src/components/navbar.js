@@ -42,12 +42,14 @@ export const Navbar = () => {
         </NavLink>
         <NavLink className="navLink" style={getActiveStyle} to="/wishlist">
           <span className="icons">&#10084;</span>
-          <span className="numbers navCartNum">{wishListCounter}</span>
+          <span className="numbers navCartNum">
+            {wishListCounter ? wishListCounter : 0}
+          </span>
         </NavLink>
         <NavLink style={getActiveStyle} className="navLink cartBtn" to="/cart">
           {" "}
           <span className="icons">&#128722;</span>
-          <span className="numbers navCartNum">{itemsNum}</span>
+          <span className="numbers navCartNum">{itemsNum ? itemsNum : 0}</span>
         </NavLink>
       </div>
     </nav>
