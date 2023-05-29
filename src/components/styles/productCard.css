@@ -120,7 +120,7 @@
 
 @media only screen and (min-width: 900px) {
   .productListItem {
-    width: 14rem;
+    width: 13rem;
     height: 22rem;
   }
   .productListImg {
@@ -136,6 +136,9 @@
 }
 
 @media only screen and (min-width: 1280px) {
+  .productListImg {
+    height: 14rem;
+  }
   .productListItem {
     width: 15rem;
     height: 22rem;
