@@ -11,7 +11,7 @@ export const Login = () => {
     <div className="loginForm">
       <div className="loginSection">
         {!isLoggedIn && (
-          <form action={loginHandler}>
+          <form>
             <div className="imgcontainer">
               <img src={person} alt="Avatar" className="avatar" />
             </div>
