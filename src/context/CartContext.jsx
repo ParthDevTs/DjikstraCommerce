@@ -56,7 +56,6 @@ export const CartProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then(async (data) => {
-        console.log(await data);
         setWishList(await data.wishlist);
       });
   };
@@ -88,7 +87,6 @@ export const CartProvider = ({ children }) => {
       .then((res) => res.json())
       .then(async (data) => {
         setCartProducts(await data.cart);
-        console.log(data);
       });
   };
 
@@ -107,7 +105,6 @@ export const CartProvider = ({ children }) => {
       .then((res) => res.json())
       .then(async (data) => {
         setCartProducts(await data.cart);
-        console.log(data);
       });
   };
 
@@ -116,7 +113,9 @@ export const CartProvider = ({ children }) => {
       const header = {
         authorization: localStorage.getItem("encodedToken"),
       };
-      const prodInList = cartProducts.find((product) => product.id === item.id);
+      const prodInList = cartProducts?.find(
+        (product) => product.id === item.id
+      );
 
       if (prodInList === undefined) {
         createNewCartProd(item, header);
