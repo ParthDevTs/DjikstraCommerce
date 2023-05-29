@@ -84,7 +84,7 @@ export const ProductDetails = () => {
               <button
                 onClick={addToCartHandler}
                 className="addToCartBtn prodAddToCart  btn"
-                disabled={isLoggedIn}
+                disabled={!isLoggedIn}
               >
                 {addtocart}
               </button>
@@ -95,7 +95,7 @@ export const ProductDetails = () => {
                 }}
                 onClick={wishlistHandler}
                 className="wishListBtn prodAddToCart btn"
-                disabled={isLoggedIn}
+                disabled={!isLoggedIn}
               >
                 {!disabledWishlist ? "Wish List" : "Wishlisted"}
               </button>
