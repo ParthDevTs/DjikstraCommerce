@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
   const [productList, setProductList] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
 
-  const [wishListCounter, setWishListCounter] = useState();
+  const [wishListCounter, setWishListCounter] = useState(0);
 
   const getWishlist = async () => {
     setShowLoader(true);

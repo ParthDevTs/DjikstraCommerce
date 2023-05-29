@@ -7,7 +7,7 @@ export const Navbar = () => {
   const { cartProducts, wishListCounter } = useCart();
   const { isLoggedIn } = useAuthContext();
 
-  const itemsNum = cartProducts.reduce((total, curr) => total + curr.qty, 0);
+  const itemsNum = cartProducts?.reduce((total, curr) => total + curr.qty, 0);
 
   const navigate = useNavigate();
   const getActiveStyle = ({ isActive }) => ({
