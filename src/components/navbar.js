@@ -27,30 +27,83 @@ export const Navbar = () => {
         </span>
         <div className="spacer"></div>
         {!isLoggedIn && (
-          <NavLink className="navLink" style={getActiveStyle} to="/login">
+          <NavLink
+            className="navLink mainBar"
+            style={getActiveStyle}
+            to="/login"
+          >
             Login
           </NavLink>
         )}
         {isLoggedIn && (
-          <NavLink className="navLink" style={getActiveStyle} to="/login">
+          <NavLink
+            className="navLink mainBar"
+            style={getActiveStyle}
+            to="/login"
+          >
             logOut
           </NavLink>
         )}
 
-        <NavLink className="navLink" style={getActiveStyle} to="/productList">
+        <NavLink
+          className="navLink mainBar"
+          style={getActiveStyle}
+          to="/productList"
+        >
           All Products
         </NavLink>
-        <NavLink className="navLink" style={getActiveStyle} to="/wishlist">
+        <NavLink
+          className="navLink mainBar"
+          style={getActiveStyle}
+          to="/wishlist"
+        >
           <span className="icons">&#10084;</span>
           <span className="numbers navCartNum">
             {wishListCounter ? wishListCounter : 0}
           </span>
         </NavLink>
-        <NavLink style={getActiveStyle} className="navLink cartBtn" to="/cart">
+        <NavLink
+          style={getActiveStyle}
+          className="navLink cartBtn mainBar"
+          to="/cart"
+        >
           {" "}
           <span className="icons">&#128722;</span>
           <span className="numbers navCartNum">{itemsNum ? itemsNum : 0}</span>
         </NavLink>
+        <div className="lowerbar">
+          {!isLoggedIn && (
+            <NavLink className="navLink" style={getActiveStyle} to="/login">
+              Login
+            </NavLink>
+          )}
+          {isLoggedIn && (
+            <NavLink className="navLink" style={getActiveStyle} to="/login">
+              logOut
+            </NavLink>
+          )}
+
+          <NavLink className="navLink" style={getActiveStyle} to="/productList">
+            All Products
+          </NavLink>
+          <NavLink className="navLink" style={getActiveStyle} to="/wishlist">
+            <span className="icons">&#10084;</span>
+            <span className="numbers navCartNum">
+              {wishListCounter ? wishListCounter : 0}
+            </span>
+          </NavLink>
+          <NavLink
+            style={getActiveStyle}
+            className="navLink cartBtn"
+            to="/cart"
+          >
+            {" "}
+            <span className="icons">&#128722;</span>
+            <span className="numbers navCartNum">
+              {itemsNum ? itemsNum : 0}
+            </span>
+          </NavLink>
+        </div>
       </div>
     </nav>
   );

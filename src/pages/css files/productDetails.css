@@ -32,8 +32,8 @@
   align-items: flex-start;
   justify-content: center;
   flex-grow: 1;
-  padding: 5rem;
-  gap: 2rem;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .detailsWindow > .actionButton {
@@ -81,5 +81,9 @@
   .productDetailMainWindow {
     flex-direction: row;
     align-items: flex-start;
+  }
+  .productDetailMainWindow > .detailsWindow {
+    padding: 5rem;
+    gap: 1rem;
   }
 }

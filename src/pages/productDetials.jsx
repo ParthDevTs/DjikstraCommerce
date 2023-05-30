@@ -13,7 +13,7 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const { isLoggedIn } = useAuthContext();
   const { addToWishlist, addToCart, wishlist, removeFromWishlist } = useCart();
-  const { errorMessage, setErrorMessage } = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   // eslint-disable-next-line
   useEffect(() => {
     const getProduct = async () => {
@@ -83,7 +83,7 @@ export const ProductDetails = () => {
             <h1>{name}</h1>
             <h2 className="numbers">Rs. {price}</h2>
             <h3>Category: {category}</h3>
-            {!memory === null ? (
+            {memory && memory === null ? (
               <h2>
                 Memory: <span style={{ color: "#2874f0" }}>{memory}Gb</span>
               </h2>
@@ -93,7 +93,7 @@ export const ProductDetails = () => {
               <button
                 onClick={addToCartHandler}
                 className="addToCartBtn prodAddToCart  btn"
-                disabled={!isLoggedIn}
+                // disabled={!isLoggedIn}
               >
                 {addtocart}
               </button>
@@ -104,7 +104,7 @@ export const ProductDetails = () => {
                 }}
                 onClick={wishlistHandler}
                 className="wishListBtn prodAddToCart btn"
-                disabled={!isLoggedIn}
+                // disabled={!isLoggedIn}
               >
                 {!disabledWishlist ? "Wish List" : "Wishlisted"}
               </button>
@@ -114,8 +114,8 @@ export const ProductDetails = () => {
               >
                 All Products
               </button>
-              {errorMessage && <p>Login To Continue</p>}
             </div>
+            {errorMessage && <p>Login To Continue</p>}
           </div>
         </div>
       )}

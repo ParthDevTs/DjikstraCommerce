@@ -8,7 +8,7 @@ export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
   const { _id, name, price, category, imgUrl } = item;
   const [addToCartLabel, setAddToCartLabel] = useState("Add To Cart");
-  const { isLoggedIn } = useAuthContext();
+  // const { isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
 
   let disabledWishlist =
@@ -53,11 +53,7 @@ export const ProductCard = ({ item }) => {
         </Link>
       </div>
       <footer>
-        <button
-          onClick={addToCartHandler}
-          className="addToCartBtn btn"
-          disabled={!isLoggedIn}
-        >
+        <button onClick={addToCartHandler} className="addToCartBtn btn">
           {addToCartLabel}
         </button>
         <button
@@ -67,7 +63,6 @@ export const ProductCard = ({ item }) => {
           }}
           onClick={togglewishlist}
           className="wishListBtn btn"
-          disabled={!isLoggedIn}
         >
           {!disabledWishlist ? "Wish List" : "Wishlisted"}
         </button>
