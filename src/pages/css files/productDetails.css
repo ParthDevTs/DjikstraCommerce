@@ -78,12 +78,19 @@
 }
 
 @media only screen and (min-width: 700px) {
+  .productDetailMainWindow > .detailsWindow {
+    padding: 5rem;
+    gap: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
   .productDetailMainWindow {
     flex-direction: row;
     align-items: flex-start;
   }
   .productDetailMainWindow > .detailsWindow {
-    padding: 5rem;
+    padding: 3rem;
     gap: 1rem;
   }
 }
