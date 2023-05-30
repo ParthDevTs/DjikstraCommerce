@@ -30,10 +30,12 @@ export const Cart = () => {
           <h2>Total Amount</h2>
           <p className="totalValue numbers">
             {`Rs.
-            ${cartProducts?.reduce(
-              (totalValue, { price, qty }) => totalValue + price * qty,
-              0
-            )}`}
+            ${
+              cartProducts?.reduce(
+                (totalValue, { price, qty }) => totalValue + price * qty,
+                0
+              ) ?? 0
+            }`}
           </p>
           <div className="actionItems">
             <button className="buyNowButton btn">Buy Now</button>

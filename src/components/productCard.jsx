@@ -2,28 +2,38 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "./styles/productCard.css";
+import { useAuthContext } from "../context/authContext";
 
 export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
   const { _id, name, price, category, imgUrl } = item;
   const [addToCartLabel, setAddToCartLabel] = useState("Add To Cart");
-  // const { isLoggedIn } = useAuthContext();
+  const [errorMessage, setErrorMessage] = useState(false);
+  const { isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
 
   let disabledWishlist =
     wishlist?.find((product) => product._id === item._id) !== undefined;
 
   const togglewishlist = () => {
-    !disabledWishlist ? addToWishlist(item) : removeFromWishlist(item);
+    if (!isLoggedIn) {
+      setErrorMessage(true);
+    } else {
+      !disabledWishlist ? addToWishlist(item) : removeFromWishlist(item);
+    }
   };
 
   const addToCartHandler = () => {
-    setAddToCartLabel("Added ✓");
-    addToCart(item);
-    const timer = setTimeout(() => {
-      setAddToCartLabel("Add To Cart");
-    }, 1000);
-    return () => clearTimeout(timer);
+    if (!isLoggedIn) {
+      setErrorMessage(true);
+    } else {
+      setAddToCartLabel("Added ✓");
+      addToCart(item);
+      const timer = setTimeout(() => {
+        setAddToCartLabel("Add To Cart");
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
   };
 
   return (
@@ -65,6 +75,7 @@ export const ProductCard = ({ item }) => {
         >
           {!disabledWishlist ? "Wish List" : "Wishlisted"}
         </button>
+        {errorMessage && <p className="error__message">Login To Continue</p>}
       </footer>
     </li>
   );

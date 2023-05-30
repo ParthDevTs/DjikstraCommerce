@@ -115,7 +115,9 @@ export const ProductDetails = () => {
                 All Products
               </button>
             </div>
-            {errorMessage && <p>Login To Continue</p>}
+            {errorMessage && (
+              <p className="error__message">Login To Continue</p>
+            )}
           </div>
         </div>
       )}
