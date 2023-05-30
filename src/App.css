@@ -68,7 +68,7 @@ h1,
   grid-area: footer;
 }
 
-.app {
+.App {
   grid-template-areas:
     "nav nav nav"
     "mainpage mainpage mainpage"
@@ -258,4 +258,12 @@ link {
   background-color: rgba(255, 255, 255, 0.329);
   display: grid;
   place-content: center;
+}
+
+.error__message {
+  color: red;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
 }

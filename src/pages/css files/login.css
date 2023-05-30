@@ -105,3 +105,11 @@ span.psw {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .loginForm {
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 2rem;
+  }
+}

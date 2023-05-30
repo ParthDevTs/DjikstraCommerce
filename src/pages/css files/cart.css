@@ -34,12 +34,19 @@
   margin: 5px;
   box-shadow: 0 0 1rem rgb(199, 199, 199);
   border-radius: 0.5rem;
+
+  margin: 2rem;
 }
 
 .total > .totalValue {
   flex-grow: 1;
   color: #2874f0;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
 }
 .mainWindow > .cartList {
   display: flex;
@@ -70,12 +77,17 @@
   align-self: center;
   justify-self: center;
 }
+.cartProduct > .content > h3 {
+  font-size: 1rem;
+  color: #2874f0;
+}
 
 .cartProduct > .pricing {
   align-self: center;
   justify-self: center;
   padding-right: 0.5rem;
   font-weight: 700;
+  font-size: 0.8rem;
 }
 
 .cartProduct > .Link {
@@ -192,13 +204,19 @@
   .mainWindow > .total {
     width: 100%;
     padding: 2rem;
+    margin: unset;
+    margin-top: 1rem;
   }
   .cartProduct {
     padding: 1rem;
     gap: 1rem;
   }
+  .cartProduct > .content > h3 {
+    font-size: unset;
+  }
   .cartProduct > .pricing {
     padding-right: 1rem;
+    font-size: 1.2rem;
   }
   .cartProduct > .Link {
     padding-right: 1rem;

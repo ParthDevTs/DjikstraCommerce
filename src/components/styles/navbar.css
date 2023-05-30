@@ -72,6 +72,7 @@
 @media (max-width: 700px) {
   .navStyle {
     height: 5.5rem;
+    padding: 0.5rem;
   }
   .navStyle > .navContent {
     flex-direction: column;
@@ -88,9 +89,11 @@
     justify-content: space-evenly;
     align-self: center;
     width: 100%;
+    padding: 0.5rem;
   }
   .logo {
     margin-top: 0.5rem;
+    font-size: 1.2rem;
   }
 }
 
