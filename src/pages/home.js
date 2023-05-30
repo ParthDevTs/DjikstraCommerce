@@ -70,8 +70,14 @@ export const Home = () => {
           <img className="image" src={tech} alt="" />
         </div>
         <div className="collections">
-          <div className="wintercollection collection"></div>
-          <div className="summerCollection collection"></div>
+          <div
+            onClick={() => navigate("/productList")}
+            className="wintercollection collection newLaunches_hexa"
+          ></div>
+          <div
+            onClick={() => navigate("/productList")}
+            className="summerCollection collection newLaunches_focal"
+          ></div>
         </div>
       </div>
     </div>
