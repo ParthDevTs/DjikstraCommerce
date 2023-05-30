@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Dna } from "react-loader-spinner";
 import "./css files/cart.css";
 
@@ -20,6 +20,8 @@ export const Cart = () => {
     getCart();
     // eslint-disable-next-line
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <div className="cartPage">
@@ -67,9 +69,15 @@ export const Cart = () => {
               };
               return (
                 <li className="cartProduct" key={_id}>
-                  <img src={imgUrl} alt="phoneImg" />
+                  <img
+                    onClick={() => navigate(`/productList/${_id}`)}
+                    src={imgUrl}
+                    alt="phoneImg"
+                  />
                   <div className="content">
-                    <h3>{name}</h3>
+                    <h3 onClick={() => navigate(`/productList/${_id}`)}>
+                      {name}
+                    </h3>
                     <p className="numbers">QTY: {qty}</p>
                   </div>
                   <div className="specs">{details}</div>
