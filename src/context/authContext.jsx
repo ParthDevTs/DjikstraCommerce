@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
       .then(async (res) => await res.json())
       .then(async (data) => {
         localStorage.setItem("encodedToken", data.encodedToken);
-
+        localStorage.setItem("loginEmail", creds.email);
         setIsLoggedIn(true);
         navigate(location?.state?.from?.pathname);
         loginDataLoad();

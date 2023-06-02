@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getAddresss } from "../database/addressDb";
 import React from "react";
+import { useAuthContext } from "./authContext";
 
 export const CartContext = createContext(null);
 
@@ -8,8 +10,11 @@ export const CartProvider = ({ children }) => {
   const [wishlist, setWishList] = useState([]);
   const [productList, setProductList] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
-
+  const [address, setAddress] = useState([]);
+  const { isLoggedIn } = useAuthContext();
   const [wishListCounter, setWishListCounter] = useState(0);
+
+  console.log(address);
 
   const getWishlist = async () => {
     setShowLoader(true);
@@ -148,6 +153,7 @@ export const CartProvider = ({ children }) => {
     getWishlist();
     getCart();
   };
+
   useEffect(() => {
     const updateCounter = () => {
       setWishListCounter(wishlist?.reduce((total, curr) => total + 1, 0));
@@ -155,6 +161,15 @@ export const CartProvider = ({ children }) => {
 
     updateCounter();
   }, [wishlist]);
+  //address management
+  useEffect(() => {
+    const getAddress = async () => {
+      let email = localStorage.getItem("loginEmail");
+      let addressArray = await getAddresss(email);
+      setAddress(await addressArray);
+    };
+    getAddress();
+  }, [isLoggedIn]);
 
   return (
     <CartContext.Provider
@@ -175,6 +190,7 @@ export const CartProvider = ({ children }) => {
         setProductList,
         showLoader,
         loginDataLoad,
+        address,
       }}
     >
       {children}

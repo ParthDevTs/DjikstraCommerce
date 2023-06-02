@@ -1,9 +1,12 @@
 import { useAuthContext } from "../context/authContext";
 import "./css files/login.css";
 import person from "../assets/personImage.png";
+import { useCart } from "../context/CartContext";
 
 export const Login = () => {
   const { logOut, logon, isLoggedIn } = useAuthContext();
+  const { address } = useCart();
+  console.log(address);
   const loginHandler = () => {
     logon();
   };
@@ -62,8 +65,43 @@ export const Login = () => {
       </div>
       <div className="addressSection">
         <div className="addressBox">
-          <h1>Addresses</h1>
+          <h1 className="addressHeading">Addresses</h1>
           {!isLoggedIn && <h3>Login To Continue</h3>}
+
+          {isLoggedIn &&
+            address.map((address) => {
+              const {
+                id,
+                type,
+                addressLine1,
+                addressLine2,
+                city,
+                state,
+                isDefault,
+                pincode,
+              } = address;
+              return (
+                <li className="adddressItem" key={id}>
+                  <h3 className="type">{type}</h3>
+                  <p className="addressline add">
+                    <b>{addressLine1}</b>
+                  </p>
+                  <p className="addressline add">
+                    <b>{addressLine2}</b>
+                  </p>
+                  <p className="city add">
+                    <b>City:</b> {city}
+                  </p>
+                  <p className="city add">
+                    <b>State:</b> {state}
+                  </p>
+                  <p className="pincode add">
+                    <b>Pincode:</b> {pincode}
+                  </p>
+                  {isDefault && <div className="defaultAdd">Default</div>}
+                </li>
+              );
+            })}
         </div>
       </div>
     </div>
