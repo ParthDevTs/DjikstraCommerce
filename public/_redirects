@@ -1,8 +1,7 @@
 # Redirects from what the browser requests to what we serve
 
-/home /
-/productList/filters /productList
 /productList /productList
+/productList/filters /productList
 /login /login
 /wishlist /wishlist
 /cart /cart
