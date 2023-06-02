@@ -82,7 +82,7 @@ input[type="password"] {
   margin-top: 1rem;
   list-style: none;
   background-color: rgb(200, 200, 200);
-  padding: 1rem;
+  padding: 1rem 2rem 1rem 2rem;
   font-size: 1rem;
   color: white;
   border-radius: 10px;
