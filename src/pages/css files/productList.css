@@ -31,21 +31,67 @@
 }
 
 .productListMainWindow > .filters {
-  padding: 1rem;
+  padding: 1rem 0 1rem 0;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-
-  margin: 2rem 0 1rem 2 rem;
+  margin: 2rem 0 1rem 0;
   box-shadow: 0 0 0.5rem rgb(201, 201, 201);
+  box-sizing: border-box;
 }
 
-.filtersList > .filterHeading {
+.lineBreak {
+  height: 2px;
+  width: 100%;
+  background: black;
+  margin: 2rem 0 2rem 0;
+}
+.resetFilter {
+  background-color: red;
+  color: white;
+  padding: 0.5rem;
+  margin: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 0.2rem black;
+}
+.resetFilter:hover {
+  background-color: rgb(190, 0, 0);
+  box-shadow: none;
+}
+.filtersList > .category__filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+.price__filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+  justify-content: stretch;
+}
+.price__filter > .filterHeading {
+  text-align: center;
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
+}
+
+.filtersList > .category__filter > .filterHeading {
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.category__filter {
+  margin-top: 1rem;
 }
 
 .filterListOptions {
@@ -77,23 +123,30 @@
 .productList {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 0 1rem 0;
   margin: 0;
   place-items: center;
+  box-sizing: border-box;
 }
 
 @media only screen and (min-width: 900px) {
   .productListMainWindow {
     grid-template-columns: 200px 4fr;
+    padding: 1rem;
   }
   .productListMainWindow > .filters {
     min-height: calc(100vh - 2rem);
+    /* margin: 2rem 0 1rem 2rem; */
+    padding: 0.5rem;
   }
   .productList {
     grid-template-columns: 1fr 1fr 1fr;
 
     padding: 1rem 1rem 1rem 2rem;
     place-items: unset;
+  }
+  .filtersList > .category__filter > .filterHeading {
+    font-size: 0.6rem;
   }
 }
 

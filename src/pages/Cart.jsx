@@ -81,6 +81,7 @@ export const Cart = () => {
                       {name}
                     </h3>
                     <p className="numbers">QTY: {qty}</p>
+                    <div className="pricing numbers">Rs.{price}</div>
                   </div>
                   <div className="specs">{details}</div>
                   <div className="Link">
@@ -88,7 +89,7 @@ export const Cart = () => {
                       Product Info
                     </Link>
                   </div>
-                  <div className="pricing numbers">Rs.{price}</div>
+                  {/* <div className="pricing numbers">Rs.{price}</div> */}
                   <div className="actionButton">
                     <button
                       onClick={() => removeFromCart(product)}

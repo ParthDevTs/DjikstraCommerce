@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { ProductCard } from "../components/productCard";
 import { Dna } from "react-loader-spinner";
-
 import "./css files/productList.css";
 import { useParams } from "react-router-dom";
 
@@ -10,6 +9,11 @@ export const ProductList = () => {
   const { setProductList, productList } = useCart();
   const [localproductList, setLocalproductList] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
+  const [filteredPrice, SetFilteredPrice] = useState(0);
+
+  const handlePriceFilter = (event) => {
+    SetFilteredPrice(event.target.value);
+  };
 
   const { filter } = useParams();
 
@@ -56,37 +60,60 @@ export const ProductList = () => {
     let selectedCategory = event.target.value;
     filterProductList(selectedCategory);
   };
+
+  const handlereset = () => {
+    SetFilteredPrice(0);
+    filterProductList("All");
+  };
   return (
     <div className="productListPage">
       <div className="productListMainWindow">
         <div className="filters">
           <div className="filtersList">
-            <p className="filterHeading">Category</p>
-            <select
-              defaultValue={filter}
-              onChange={filterHandler}
-              className="categorySelection"
-            >
-              <option className="filterListOptions" value="All">
-                All
-              </option>
-              <option className="filterListOptions" value="iPhone">
-                iPhone
-              </option>
-              <option className="filterListOptions" value="iPad">
-                iPad
-              </option>
-              <option className="filterListOptions" value="Galaxy Tab">
-                Galaxy Tab
-              </option>
-              <option className="filterListOptions" value="IEMs">
-                IEMs
-              </option>
-              <option className="filterListOptions" value="Headphones">
-                Headphones
-              </option>
-            </select>
+            <div className="category__filter">
+              <p className="filterHeading">Category</p>
+              <select
+                defaultValue={filter}
+                onChange={filterHandler}
+                className="categorySelection"
+              >
+                <option className="filterListOptions" value="All">
+                  All
+                </option>
+                <option className="filterListOptions" value="iPhone">
+                  iPhone
+                </option>
+                <option className="filterListOptions" value="iPad">
+                  iPad
+                </option>
+                <option className="filterListOptions" value="Galaxy Tab">
+                  Galaxy Tab
+                </option>
+                <option className="filterListOptions" value="IEMs">
+                  IEMs
+                </option>
+                <option className="filterListOptions" value="Headphones">
+                  Headphones
+                </option>
+              </select>
+            </div>
+            <div className="lineBreak"></div>
+            <div className="price__filter">
+              <p className="filterHeading">{filteredPrice}</p>
+              <input
+                min="0"
+                max="200000"
+                type="range"
+                name="priceRange"
+                value={filteredPrice}
+                onChange={handlePriceFilter}
+                id="priceRange"
+              />
+            </div>
           </div>
+          <button className="resetFilter" onClick={handlereset}>
+            Reset Filter
+          </button>
         </div>
 
         <ul className="productList">
@@ -103,9 +130,17 @@ export const ProductList = () => {
               />
             </div>
           )}
-          {localproductList.map((item) => (
-            <ProductCard key={item._id} item={item} />
-          ))}
+          {localproductList
+            .filter((item) => {
+              if (filteredPrice !== 0) {
+                return item.price < filteredPrice;
+              } else {
+                return true;
+              }
+            })
+            .map((item) => (
+              <ProductCard key={item._id} item={item} />
+            ))}
         </ul>
       </div>
     </div>

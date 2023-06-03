@@ -23,19 +23,19 @@
 }
 
 .mainWindow > .total {
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   justify-content: center;
   max-height: 10rem;
   background-color: white;
   margin: 5px;
   box-shadow: 0 0 1rem rgb(199, 199, 199);
   border-radius: 0.5rem;
-
   margin: 2rem;
+  min-height: 10rem;
+  box-sizing: border-box;
 }
 
 .total > .totalValue {
@@ -59,64 +59,88 @@
 }
 
 .cartProduct {
-  display: flex;
+  display: grid;
   flex-direction: row;
-  padding: 0.4rem;
+  padding: 1rem;
   gap: 0.4rem;
-  height: 5rem;
+  place-content: center;
+  height: 15rem;
   max-width: 900px;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  grid-template-areas:
+    "image content content"
+    "specs specs specs"
+    "link link link"
+    "action action action";
 
   margin: 0.8rem 0.5rem 0.8rem 0.5rem;
   box-shadow: 0 0 1rem rgb(199, 199, 199);
   border-radius: 0.5rem;
   background-color: white;
 }
-.cartProduct > .content {
+.cartProduct > img {
+  grid-area: image;
+  max-height: 6rem;
   flex-grow: 1;
+}
+.cartProduct > .content {
   align-self: center;
   justify-self: center;
+  grid-area: content;
+  width: 100%;
 }
 .cartProduct > .content > h3 {
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #2874f0;
+  text-align: left;
+}
+.cartProduct > .content > .numbers {
+  margin-top: 0.5rem;
+  text-align: left;
 }
 
-.cartProduct > .pricing {
+/* .cartProduct > .content > .pricing {
   align-self: center;
   justify-self: center;
-  padding-right: 0.5rem;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
+  width: 100%;
+  text-align: left;
+  font-size: 1.4rem;
+
+  margin-top: 1rem;
+} */
 
 .cartProduct > .Link {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-right: 0.5rem;
+  grid-area: link;
 }
 
 .cartProduct > .specs {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
-  flex-grow: 0.5;
-  max-width: 15rem;
-  padding: 1rem;
+  font-size: 0.7rem;
+  flex-grow: 1;
+
+  text-align: left;
+  grid-area: specs;
+  width: 100%;
+  margin-top: 1rem;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align: justify;
 }
 
 .actionButton {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   min-width: 2rem;
   gap: 0.5rem;
   align-items: center;
   justify-content: space-around;
+  grid-area: action;
 }
 
 .actionButton > .deletItem,
@@ -206,19 +230,57 @@
     padding: 2rem;
     margin: unset;
     margin-top: 1rem;
+    min-height: 12rem;
   }
   .cartProduct {
-    padding: 1rem;
-    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding: 0.4rem;
+    gap: 0.4rem;
+    height: 6rem;
+    max-width: 900px;
+    justify-content: space-between;
+
+    margin: 0.8rem 0.5rem 0.8rem 0.5rem;
+    box-shadow: 0 0 1rem rgb(199, 199, 199);
+    border-radius: 0.5rem;
+    background-color: white;
+  }
+  .cartProduct > img {
+    max-height: unset;
+    max-width: 5rem;
+  }
+  .cartProduct > .content {
+    max-width: 10rem;
+    width: unset;
+    flex-grow: 1;
   }
   .cartProduct > .content > h3 {
     font-size: unset;
   }
-  .cartProduct > .pricing {
+  /* .cartProduct > .content > .pricing {
     padding-right: 1rem;
     font-size: 1.2rem;
-  }
+    padding-right: 0.5rem;
+    margin-top: unset;
+  } */
   .cartProduct > .Link {
     padding-right: 1rem;
+    max-width: 6rem;
+  }
+  .cartProduct > .specs {
+    max-width: 20rem;
+    font-size: 0.6rem;
+    flex-grow: 1;
+    margin-top: unset;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .actionButton {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-self: end;
+    max-width: 1rem;
   }
 }
