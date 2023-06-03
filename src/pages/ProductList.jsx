@@ -107,6 +107,7 @@ export const ProductList = () => {
                 name="priceRange"
                 value={filteredPrice}
                 onChange={handlePriceFilter}
+                step={10000}
                 id="priceRange"
               />
             </div>
