@@ -11,11 +11,40 @@ export const ProductList = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [filteredPrice, SetFilteredPrice] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  const [listsort, setListSort] = useState("a-z");
 
   const handlePriceFilter = (event) => {
     SetFilteredPrice(event.target.value);
   };
 
+  const sortList = (a, b) => {
+    switch (listsort) {
+      case "a-z":
+        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+      case "z-a":
+        return a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1;
+      case "lowhigh":
+        return a.price > b.price ? 1 : -1;
+      case "highlow":
+        return a.price > b.price ? -1 : 1;
+      default:
+        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+    }
+  };
+
+  const priceFilter = (item) => {
+    if (filteredPrice !== 0) {
+      return item.price < filteredPrice;
+    } else {
+      return true;
+    }
+  };
+
+  const searchList = (item) => {
+    return searchTerm.toLowerCase() === ""
+      ? item
+      : item.name.toLowerCase().includes(searchTerm);
+  };
   const { filter } = useParams();
 
   const getData = async () => {
@@ -66,6 +95,7 @@ export const ProductList = () => {
     SetFilteredPrice(0);
     filterProductList("All");
     setSearchTerm("");
+    setListSort("a-z");
   };
   return (
     <div className="productListPage">
@@ -124,10 +154,32 @@ export const ProductList = () => {
               />
             </div>
             <div className="lineBreak"></div>
+            <div className="category__filter">
+              <p className="filterHeading">Sorting</p>
+              <select
+                value={listsort}
+                onChange={(event) => setListSort(event.target.value)}
+                className="categorySelection"
+              >
+                <option className="filterListOptions" value="a-z">
+                  a-z
+                </option>
+                <option className="filterListOptions" value="z-a">
+                  z-a
+                </option>
+                <option className="filterListOptions" value="lowhigh">
+                  Price: Lowest First
+                </option>
+                <option className="filterListOptions" value="highlow">
+                  Price: Highest First
+                </option>
+              </select>
+            </div>
+            <div className="lineBreak"></div>
           </div>
 
           <button className="resetFilter" onClick={handlereset}>
-            Reset Filter
+            Reset Filters
           </button>
         </div>
 
@@ -146,18 +198,9 @@ export const ProductList = () => {
             </div>
           )}
           {localproductList
-            .filter((item) => {
-              if (filteredPrice !== 0) {
-                return item.price < filteredPrice;
-              } else {
-                return true;
-              }
-            })
-            .filter((item) => {
-              return searchTerm.toLowerCase() === ""
-                ? item
-                : item.name.toLowerCase().includes(searchTerm);
-            })
+            .filter((item) => priceFilter(item))
+            .filter((item) => searchList(item))
+            .sort((first, second) => sortList(first, second))
             .map((item) => (
               <ProductCard key={item._id} item={item} />
             ))}
