@@ -6,7 +6,7 @@ import { useAuthContext } from "../context/authContext";
 
 export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
-  const { _id, name, price, category, imgUrl, newLaunch } = item;
+  const { _id, name, price, category, imgUrl } = item;
   const [addToCartLabel, setAddToCartLabel] = useState("Add To Cart");
   const [errorMessage, setErrorMessage] = useState(false);
   const { isLoggedIn } = useAuthContext();
