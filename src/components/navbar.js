@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   const navigate = useNavigate();
   const getActiveStyle = ({ isActive }) => ({
-    color: isActive ? "red" : "",
+    color: isActive ? "#e6d8d8" : "",
   });
 
   return (
@@ -23,27 +23,9 @@ export const Navbar = () => {
           className="logo"
         >
           Djikstra
-          <span>Commerce</span>
+          <span style={{ color: "#e6d8d8" }}>Commerce</span>
         </span>
         <div className="spacer"></div>
-        {!isLoggedIn && (
-          <NavLink
-            className="navLink mainBar"
-            style={getActiveStyle}
-            to="/login"
-          >
-            Login
-          </NavLink>
-        )}
-        {isLoggedIn && (
-          <NavLink
-            className="navLink mainBar"
-            style={getActiveStyle}
-            to="/login"
-          >
-            logOut
-          </NavLink>
-        )}
 
         <NavLink
           className="navLink mainBar"
@@ -71,6 +53,25 @@ export const Navbar = () => {
           <span className="icons">&#128722;</span>
           <span className="numbers navCartNum">{itemsNum ? itemsNum : 0}</span>
         </NavLink>
+        {!isLoggedIn && (
+          <NavLink
+            className="navLink mainBar"
+            style={getActiveStyle}
+            to="/login"
+          >
+            Login
+          </NavLink>
+        )}
+        {isLoggedIn && (
+          <NavLink
+            className="navLink mainBar"
+            style={getActiveStyle}
+            to="/login"
+          >
+            logOut
+          </NavLink>
+        )}
+
         <div className="lowerbar">
           {!isLoggedIn && (
             <NavLink className="navLink" style={getActiveStyle} to="/login">

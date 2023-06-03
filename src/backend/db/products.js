@@ -209,10 +209,46 @@ export const products = [
     price: 99990,
     memory: null,
     currency: "INR",
-    category: "IEMs",
+    category: "Headphones",
     newLaunch: true,
     details: `Focal's Clear Mg open-back headphones set the bar high for sound quality and feature-rich, design-driven functionality. These premium headphones feature unique Focal technologies developed through cutting-edge acoustic research and Focal know-how. Clear Mg is a prime example of design finesse and emanates exuberance in all respects. The Clear Mg hosts a 40mm dynamic driver unit. Magnesium, a material that enables sharp, precise, impactful playback and produces stunningly realistic sound, makes up the speaker drivers. The sound is incredibly pure and natural, unleashing emotions for better listening enjoyment. `,
     imgUrl:
       "https://cdn.shopify.com/s/files/1/0153/8863/products/Clear-MG-01.jpg",
+  },
+  {
+    _id: uuid(),
+    name: "Audeze - LCD-X",
+    price: 109990,
+    memory: null,
+    currency: "INR",
+    category: "Headphones",
+    newLaunch: true,
+    details: `Audeze began in a garage in Orange County, Ca, like many other high-tech companies. Audeze is the brainchild of Sankar Thiagasamudram & Alexander Rosson and was founded in 2008. It did not take long for the founders to recognise that they had the potential to be one of the most influential companies in the headphone market. Audeze was born as a result of this. Audeze is known for making some of the best planar magnetic headphones. The latest and greatest LCD-X is an add-on to the most revered line-up of planar magnetic headphones from Audeze. The Audeze LCD-X is the gold standard in the professional audio world. It has low distortion, lightning-fast transient response, and accurate frequency response. The advancements in technology you will find in LCD-X make them truly special, and audiophiles and professionals have loved and adopted them. Audeze’s planar magnetic drivers do not suffer from variation in impedance. Because the voice coil is printed directly on the diaphragm, they produce a flat impedance curve. This design ensures no change in resistance regardless of the frequency, offering a boost in control and resolution.`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Audeze-LCD-X-New.jpg?v=1590835301&width=600",
+  },
+  {
+    _id: uuid(),
+    name: "RAAL - SR1a",
+    price: 349999,
+    memory: null,
+    currency: "INR",
+    category: "Headphones",
+    newLaunch: false,
+    details: `The RAAL-requisite SR1a headphones are embedded with the latest and cutting edge technology in the audio field. This innovative approach is reflected in the driver configuration and the type of driver selected for the headphones. The SR1a is the world’s first True-Ribbon™ headphones and have been equipped with highly specialised ribbon drivers that reproduce 30Hz to 30kHz bandwidth to eliminate the need for sealed chambered bass and allow for open-air baffles (both front and back) for a full-frequency sound field.`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-RAAL-requisite-SR1a-Earfield-Monitors-1160-1160-01_037f56a5-5214-4377-85c8-50aa73b9d714.jpg?v=1637062767&width=600",
+  },
+  {
+    _id: uuid(),
+    name: "HiFiMAN - HE400se",
+    price: 10499,
+    memory: null,
+    currency: "INR",
+    category: "Headphones",
+    newLaunch: true,
+    details: `HiFiMAN is a market leader in premium headphones and takes great pleasure in continuously enhancing sound quality. HiFiMAN, founded by owner Dr Fang in New York, is one of the leading personal audio brands. It is renowned for its critically-acclaimed Planar-Magnetic headphones that feature state-of-the-art driver technology. HiFiMAN is known to bring revolutionary technologies like the Stealth Magnet that have garnered success. The audio industry's favourite HE400 series has a new addition - the HiFiMAN HE400se. The HE400 series has been winning the hearts of critics and music lovers across the globe. With the HE400se, HiFiMAN gives one more reason for you to fall in love with the HE400 series. The brand-new HE400se is a Planar Magnetic headphone with an advanced conductive layer that covers the diaphragm reducing distortion to low levels.`,
+    imgUrl:
+      "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-HiFiMAN-HE400se-1160-1160-7.jpg?v=1614245064&width=600",
   },
 ];

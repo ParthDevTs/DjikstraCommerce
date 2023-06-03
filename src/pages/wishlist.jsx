@@ -16,20 +16,20 @@ export const Wishlist = () => {
   return (
     <div className="wishlist">
       <h1 className="wishlistHeading">Wishlist</h1>
+      {showLoader && (
+        <div className="spinner-box">
+          <Dna
+            className="spinner"
+            visible={true}
+            height="100"
+            width="100"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        </div>
+      )}
       <div className="wishlistMain">
-        {showLoader && (
-          <div className="spinner-box">
-            <Dna
-              className="spinner"
-              visible={true}
-              height="100"
-              width="100"
-              ariaLabel="dna-loading"
-              wrapperStyle={{}}
-              wrapperClass="dna-wrapper"
-            />
-          </div>
-        )}
         {wishlist?.map((product) => {
           return <ProductCard key={product._id} item={product} />;
         })}

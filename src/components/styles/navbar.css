@@ -1,15 +1,15 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 .navStyle {
-  background-color: white;
+  /* background-color: white; */
+  background: #aa6418;
   height: 4rem;
   box-shadow: 0 0 10px rgb(110, 110, 110);
-  width: 100%;
   z-index: 2;
   position: relative;
-  overflow: hidden;
 }
 .navStyle > .navContent {
   position: absolute;
@@ -22,16 +22,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 2rem 0.5rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   font-family: "Montserrat", sans-serif;
-  gap: 2rem;
 }
 .navLink {
   text-decoration: none;
-  color: #a4a4a4;
+  /* color: #a4a4a4; */
+  color: white;
   position: relative;
   font-weight: 600;
   transition: all 100ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  padding: 0.5rem;
 }
 .navLink:hover {
   color: orange;
@@ -40,22 +41,23 @@
   position: absolute;
   font-size: 18px;
   transform: translate(-2px, -2px);
-  background-color: white;
+  /* background-color: white; */
   border-radius: 50%;
   font-weight: bold;
   width: 13px;
   height: 13px;
   text-align: center;
-  border: white 1px solid;
+  /* border: white 1px solid; */
 }
 .logo {
-  color: #a4a4a4;
+  /* color: #a4a4a4; */
+  color: white;
   font-weight: bold;
   margin-left: 1rem;
 }
 .spacer {
   /* width: 60%; */
-  flex-grow: 1;
+  flex-grow: 0.8;
 }
 
 .btn {
@@ -72,11 +74,11 @@
 @media (max-width: 700px) {
   .navStyle {
     height: 5.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0;
   }
   .navStyle > .navContent {
     flex-direction: column;
-    padding: 0.5rem 2rem 0.5rem 1rem;
+    gap: 0rem;
   }
   .spacer {
     display: none;

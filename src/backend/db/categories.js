@@ -30,4 +30,10 @@ export const categories = [
     description: "Music as the Artist Intended.",
     url: "https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Moondrop-Blessing-3-02.jpg?v=1681201798&width=800",
   },
+  {
+    _id: uuid(),
+    categoryName: "Headphones",
+    description: "Feel The Music.",
+    url: "https://cdn.shopify.com/s/files/1/0153/8863/products/Audeze-LCD-X-New.jpg?v=1590835301&width=600",
+  },
 ];

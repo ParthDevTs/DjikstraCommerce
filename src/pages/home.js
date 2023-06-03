@@ -31,6 +31,10 @@ export const Home = () => {
   return (
     <div className="home">
       <div className="homepage">
+        <div className="mainImage">
+          <img className="image" src={tech} alt="" />
+        </div>
+        <h1 className="category__heading">Categories</h1>
         <div className="categoryList">
           <ul className="categories">
             {showLoader && (
@@ -66,9 +70,9 @@ export const Home = () => {
             })}
           </ul>
         </div>
-        <div className="mainImage">
-          <img className="image" src={tech} alt="" />
-        </div>
+
+        <h1 className="collection__heading">New Launches</h1>
+
         <div className="collections">
           <div
             onClick={() => navigate("/productList")}

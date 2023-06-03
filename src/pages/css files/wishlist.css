@@ -1,5 +1,6 @@
 .wishlist {
   position: absolute;
+  width: 100%;
   max-width: 1280px;
   top: 50%;
   left: 50%;

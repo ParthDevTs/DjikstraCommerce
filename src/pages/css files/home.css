@@ -19,7 +19,6 @@ link {
   align-items: center;
 }
 .homepage {
-  padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: #f6f7f6;
   display: grid;
@@ -27,17 +26,23 @@ link {
   width: 100%;
   position: relative;
 }
-
+.category__heading {
+  grid-area: categoryheading;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .categoryList {
   grid-area: category;
   width: 100%;
   height: 100%;
   place-items: center;
+  margin-bottom: 2rem;
 }
 
 .categories {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   list-style: none;
   gap: 2rem;
   place-items: stretch;
@@ -51,7 +56,7 @@ link {
   height: 10rem;
   width: 10rem;
 
-  background-color: #c4c4c3;
+  background-color: #ffffff;
   place-self: center;
   position: relative;
   z-index: 1;
@@ -59,14 +64,17 @@ link {
   box-shadow: 0 0 0.4rem rgb(150, 150, 150);
   font-size: 0.8rem;
 
-  transition: background 200ms ease-in-out;
+  transition: background 200ms ease-in-out, filter 300ms ease-in-out;
   cursor: pointer;
+  overflow: hidden;
 }
 .hoverText {
   color: transparent;
   padding: 0.5rem;
   font-weight: bold;
   text-shadow: 0 0 0.5rem black;
+  font-size: 0.8rem;
+  width: 100%;
 }
 .hero-image {
   position: absolute;
@@ -97,7 +105,7 @@ link {
 }
 
 .category:hover {
-  background-color: #8b8b8b;
+  /* background-color: #8b8b8b; */
   z-index: 1;
 }
 .category:hover > .categoryLabel {
@@ -110,16 +118,19 @@ link {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80%;
+  width: 100%;
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
   word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.356);
+  font-family: "Montserrat", sans-serif;
 }
 .category:hover > .hero-image {
   z-index: -1;
-  display: none;
+  /* display: none; */
   border-radius: 0.5rem;
+  filter: blur(5px);
 }
 .mainImage {
   display: grid;
@@ -127,10 +138,11 @@ link {
   max-height: 100%;
   width: 100%;
   place-items: center;
-  margin: 2rem 0 2rem 0;
+  margin: 0 0 2rem 0;
   background-color: #c4c4c3;
   position: relative;
   z-index: 1;
+  justify-self: stretch;
 }
 .mainImage:before {
   content: "Hottest Deals on Electronics";
@@ -161,19 +173,27 @@ link {
   height: 100%;
   gap: 2rem;
 }
+.collection__heading {
+  grid-area: collectionHeading;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .collection {
   box-sizing: border-box;
   display: grid;
 
   background-color: #c4c4c3;
   gap: 1rem;
-  padding: 5rem;
+  padding: 8rem;
   width: 80%;
 }
 .homepage {
   grid-template-areas:
-    "category"
     "mainImage"
+    "categoryheading"
+    "category"
+    "collectionHeading"
     "collection";
 }
 
@@ -241,8 +261,8 @@ link {
 
 @media (min-width: 700px) {
   .homepage {
-    max-width: 700px;
-    padding: 5rem;
+    max-width: 1200px;
+    padding: 0;
   }
   .collections {
     grid-template-columns: 1fr 1fr;
@@ -268,10 +288,10 @@ link {
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1340px) {
   .homepage {
     max-width: 1280px;
-    padding: 3rem;
+    padding-bottom: 3rem;
   }
   .collections {
     grid-template-columns: 1fr 1fr;
@@ -284,16 +304,19 @@ link {
     align-items: center;
     justify-content: center;
     position: relative;
+    flex-wrap: wrap;
   }
   .category {
-    width: 8rem;
-    height: 8rem;
-    padding: 8rem;
+    /* width: 8rem;
+    height: 8rem; */
+    padding: 7rem;
   }
   .categoryLabel {
     font-size: 1.5rem;
   }
-
+  .mainImage {
+    justify-self: stretch;
+  }
   .mainImage:before {
     font-size: 5rem;
   }

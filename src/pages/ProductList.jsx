@@ -82,6 +82,9 @@ export const ProductList = () => {
               <option className="filterListOptions" value="IEMs">
                 IEMs
               </option>
+              <option className="filterListOptions" value="Headphones">
+                Headphones
+              </option>
             </select>
           </div>
         </div>

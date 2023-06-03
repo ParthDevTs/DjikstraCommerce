@@ -6,7 +6,7 @@ import { useAuthContext } from "../context/authContext";
 
 export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
-  const { _id, name, price, category, imgUrl } = item;
+  const { _id, name, price, category, imgUrl, newLaunch } = item;
   const [addToCartLabel, setAddToCartLabel] = useState("Add To Cart");
   const [errorMessage, setErrorMessage] = useState(false);
   const { isLoggedIn } = useAuthContext();
@@ -59,7 +59,7 @@ export const ProductCard = ({ item }) => {
         <span style={{ color: "#2874f0", fontSize: "0.8rem" }}>{category}</span>
         <Link className="infoLink" to={`/productList/${_id}`}>
           &#9432; more info
-        </Link>
+        </Link>{" "}
       </div>
       <footer>
         <button onClick={addToCartHandler} className="addToCartBtn btn">
