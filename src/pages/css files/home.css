@@ -20,7 +20,7 @@ link {
 }
 .homepage {
   padding-bottom: 2rem;
-  background-color: #f6f7f6;
+  background-color: #f1f3f6;
   display: grid;
   min-height: calc(100vh - 5rem);
   width: 100%;
