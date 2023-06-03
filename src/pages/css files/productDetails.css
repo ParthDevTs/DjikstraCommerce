@@ -45,6 +45,10 @@
   justify-content: stretch;
   flex-basis: 30%;
 }
+.detailsWindow > .actionButton > button {
+  width: unset;
+  min-width: 2rem;
+}
 
 .prodAddToCart {
   padding: 1rem;
@@ -81,6 +85,10 @@
   .productDetailMainWindow > .detailsWindow {
     padding: 5rem;
     gap: 1rem;
+  }
+  .detailsWindow > .actionButton > button {
+    width: unset;
+    min-width: 10rem;
   }
 }
 
