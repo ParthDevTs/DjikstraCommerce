@@ -4,6 +4,8 @@ h1,
 .App {
   /* text-align: center; */
   background-color: #f1f3f6;
+  z-index: 1;
+  position: relative;
 }
 
 * {
@@ -65,14 +67,18 @@ h1,
   grid-area: navbar;
 }
 .footer {
-  grid-area: footer;
+  /* grid-area: footer; */
+  /* position: absolute;
+  bottom: 0;
+  left: 0; */
+  width: 100%;
+  z-index: 1;
 }
 
 .App {
   grid-template-areas:
     "nav nav nav"
-    "mainpage mainpage mainpage"
-    "footer footer footer";
+    "mainpage mainpage mainpage";
 }
 /* Old Files:  */
 

@@ -15,7 +15,7 @@ link {
   width: 100%;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: stretch;
   align-items: center;
 }
 .homepage {
@@ -84,7 +84,7 @@ link {
   z-index: 1;
   height: 100%;
   width: 100%;
-  transition: all 100ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 100ms cubic-bezier(0.19, 1, 0.22, 1), filter 300ms ease-in-out;
   border-radius: 0.5rem;
 }
 .hero-image > .image {
@@ -274,7 +274,7 @@ link {
 
 @media (min-width: 700px) {
   .homepage {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     padding: 0;
   }
   .collections {
@@ -303,12 +303,14 @@ link {
 
 @media only screen and (min-width: 1340px) {
   .homepage {
-    max-width: 1280px;
+    /* max-width: 1280px; */
     padding-bottom: 3rem;
   }
   .collections {
     grid-template-columns: 1fr 1fr;
-    width: 1005;
+    max-width: 1340px;
+    justify-self: center;
+    justify-content: space-between;
   }
 
   .categories {

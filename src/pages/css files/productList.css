@@ -17,6 +17,7 @@ ProductCard {
 
 .productListPage {
   position: relative;
+  z-index: 1;
 }
 
 .productListMainWindow {
