@@ -13,6 +13,7 @@ export const Cart = () => {
     removeFromWishlist,
     getCart,
     showLoader,
+    updateCartItem,
   } = useCart();
   // eslint-disable-next-line
   useEffect(() => {
@@ -69,6 +70,7 @@ export const Cart = () => {
                   ? addToWishlist(product)
                   : removeFromWishlist(product);
               };
+
               return (
                 <li className="cartProduct" key={_id}>
                   <img
@@ -80,7 +82,38 @@ export const Cart = () => {
                     <h3 onClick={() => navigate(`/productList/${_id}`)}>
                       {name}
                     </h3>
-                    <p className="numbers">QTY: {qty}</p>
+                    <div className="quantity">
+                      <p className="numbers">
+                        QTY:{" "}
+                        <span
+                          style={{
+                            padding: "0 0.5rem 0 0.5rem",
+                            background: "black",
+                            color: "white",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {qty}
+                        </span>
+                      </p>
+                      <div className="qtybtnrow">
+                        <button
+                          className="qtyBtninc"
+                          onClick={() => updateCartItem(product, "increment")}
+                        >
+                          {" "}
+                          +1
+                        </button>
+                        <button
+                          className="qtyBtndec"
+                          onClick={() => updateCartItem(product, "decrement")}
+                          disabled={qty > 1 ? false : true}
+                        >
+                          -1
+                        </button>
+                      </div>
+                    </div>
+
                     <div className="pricing numbers">Rs.{price}</div>
                   </div>
                   <div className="specs">{details}</div>

@@ -15,6 +15,9 @@ export const CartProvider = ({ children }) => {
   const [wishListCounter, setWishListCounter] = useState(0);
 
   console.log(address);
+  const defaultHeader = {
+    authorization: localStorage.getItem("encodedToken"),
+  };
 
   const getWishlist = async () => {
     setShowLoader(true);
@@ -95,7 +98,7 @@ export const CartProvider = ({ children }) => {
       });
   };
 
-  const updateCartItem = async (item, header, action) => {
+  const updateCartItem = async (item, action, header = defaultHeader) => {
     let reqBody = {};
     if (action === "increment") {
       reqBody = { action: { type: "increment" } };
@@ -125,7 +128,7 @@ export const CartProvider = ({ children }) => {
       if (prodInList === undefined) {
         createNewCartProd(item, header);
       } else {
-        updateCartItem(item, header, "increment");
+        updateCartItem(item, "increment", header);
       }
     }
   };
@@ -191,6 +194,7 @@ export const CartProvider = ({ children }) => {
         showLoader,
         loginDataLoad,
         address,
+        updateCartItem,
       }}
     >
       {children}
