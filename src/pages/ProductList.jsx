@@ -10,6 +10,7 @@ export const ProductList = () => {
   const [localproductList, setLocalproductList] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
   const [filteredPrice, SetFilteredPrice] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handlePriceFilter = (event) => {
     SetFilteredPrice(event.target.value);
@@ -64,6 +65,7 @@ export const ProductList = () => {
   const handlereset = () => {
     SetFilteredPrice(0);
     filterProductList("All");
+    setSearchTerm("");
   };
   return (
     <div className="productListPage">
@@ -71,7 +73,7 @@ export const ProductList = () => {
         <div className="filters">
           <div className="filtersList">
             <div className="category__filter">
-              <p className="filterHeading">Category</p>
+              <p className="filterHeading">Select Category</p>
               <select
                 defaultValue={filter}
                 onChange={filterHandler}
@@ -99,6 +101,7 @@ export const ProductList = () => {
             </div>
             <div className="lineBreak"></div>
             <div className="price__filter">
+              <p className="filterHeading">Filter Price</p>
               <p className="filterHeading">{filteredPrice}</p>
               <input
                 min="0"
@@ -111,7 +114,18 @@ export const ProductList = () => {
                 id="priceRange"
               />
             </div>
+            <div className="lineBreak"></div>
+            <div className="searchbox">
+              <p className="filterHeading">Search Item</p>
+              <input
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                type="text"
+              />
+            </div>
+            <div className="lineBreak"></div>
           </div>
+
           <button className="resetFilter" onClick={handlereset}>
             Reset Filter
           </button>
@@ -138,6 +152,11 @@ export const ProductList = () => {
               } else {
                 return true;
               }
+            })
+            .filter((item) => {
+              return searchTerm.toLowerCase() === ""
+                ? item
+                : item.name.toLowerCase().includes(searchTerm);
             })
             .map((item) => (
               <ProductCard key={item._id} item={item} />

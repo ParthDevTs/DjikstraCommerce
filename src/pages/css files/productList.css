@@ -65,26 +65,30 @@
 .filtersList > .category__filter {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-direction: column;
   width: 100%;
   gap: 1rem;
+  font-family: "Montserrat", sans-serif;
 }
 .price__filter {
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   flex-direction: column;
-
   gap: 0.5rem;
   justify-content: stretch;
+  font-family: "Montserrat", sans-serif;
 }
-.price__filter > .filterHeading {
-  text-align: center;
+/* .price__filter > .filterHeading {
   font-weight: 500;
   font-size: 0.8rem;
   text-transform: uppercase;
-}
+} */
 
-.filtersList > .category__filter > .filterHeading {
+.filterHeading {
+  text-align: center;
   font-weight: 500;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -120,6 +124,10 @@
   box-shadow: 2px 2px 5px rgb(134, 133, 133);
   border-radius: 5px;
 }
+
+.searchbox {
+  font-family: "Montserrat", sans-serif;
+}
 .productList {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -145,7 +153,7 @@
     padding: 1rem 1rem 1rem 2rem;
     place-items: unset;
   }
-  .filtersList > .category__filter > .filterHeading {
+  .filterHeading {
     font-size: 0.6rem;
   }
 }
