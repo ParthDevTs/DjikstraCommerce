@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./css files/home.css";
 import { Dna } from "react-loader-spinner";
-import tech from "../assets/tech.avif";
+// import tech from "../assets/tech.avif";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
@@ -32,7 +32,12 @@ export const Home = () => {
     <div className="home">
       <div className="homepage">
         <div className="mainImage">
-          <img className="image" src={tech} alt="" />
+          <img
+            className="image"
+            src="https://cdn.shopify.com/s/files/1/0153/8863/files/hexa_laptop.jpg?v=1683285676&width=1600"
+            alt=""
+          />
+          {/* <img className="image" src={tech} alt="" /> */}
         </div>
         <h1 className="category__heading">Categories</h1>
         <div className="categoryList">

@@ -11,6 +11,10 @@
   place-content: center;
 }
 
+ProductCard {
+  position: relative;
+}
+
 .productListPage {
   position: relative;
 }

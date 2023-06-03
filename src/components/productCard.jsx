@@ -61,6 +61,7 @@ export const ProductCard = ({ item }) => {
           &#9432; more info
         </Link>{" "}
       </div>
+      <div className="newLaunch">{item.newLaunch ? "New Launch" : ""}</div>
       <footer>
         <button onClick={addToCartHandler} className="addToCartBtn btn">
           {addToCartLabel}

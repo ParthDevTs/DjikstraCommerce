@@ -201,9 +201,9 @@ export const ProductList = () => {
             .filter((item) => priceFilter(item))
             .filter((item) => searchList(item))
             .sort((first, second) => sortList(first, second))
-            .map((item) => (
-              <ProductCard key={item._id} item={item} />
-            ))}
+            .map((item) => {
+              return <ProductCard key={item._id} item={item} />;
+            })}
         </ul>
       </div>
     </div>
