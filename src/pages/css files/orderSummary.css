@@ -5,9 +5,158 @@
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 5rem);
+  position: relative;
+  z-index: 1;
 }
 .orderSummary {
   max-width: 1280px;
   display: grid;
-  grid-template-columns: 400px auto;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+.order {
+  background: white;
+  padding: 2rem;
+  display: grid;
+  gap: 3rem;
+  border-radius: 1rem;
+}
+.order > h1 {
+  text-align: center;
+}
+.order > footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.orderDetails {
+  display: grid;
+  padding: 2rem;
+  place-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+.orderDetails > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  justify-self: stretch;
+  align-items: center;
+  border-bottom: 1px solid #fcb045;
+  padding: 0.5rem;
+}
+.orderDetails > div :first-child {
+  color: #979797;
+
+  padding-right: 1rem;
+}
+.orderDetails > div :nth-child(2) {
+  font-size: 1.2rem;
+}
+
+.addressPopout {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.452);
+  display: grid;
+  align-items: start;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.add__address__page {
+  display: grid;
+  position: relative;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 3rem;
+}
+/* .add__address__page :first-child {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+} */
+.closeAddress {
+  position: absolute;
+  top: 1rem;
+  right: -4rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 50%;
+}
+.add__address__page > .formField {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.allAddresses {
+  box-sizing: border-box;
+  max-height: 60vh;
+  overflow-y: scroll;
+  width: 100%;
+}
+.addAddress {
+  padding: 1rem;
+  display: grid;
+  place-content: center;
+}
+.addressList {
+  display: grid;
+  place-content: center;
+}
+.addressList > h3 {
+  text-align: center;
+  margin: 2rem;
+}
+.addAddress > button {
+  padding: 1rem;
+  color: #fcb045;
+  background: white;
+  border-radius: 1rem;
+}
+
+.addressSelection {
+  font-size: 0.5rem;
+}
+.address__selection__option {
+  font-size: 1rem;
+}
+
+@media (min-width: 700px) {
+  .orderSummary {
+    grid-template-columns: 1fr 2fr;
+    align-items: self-start;
+  }
+  .order {
+    margin-top: 3rem;
+  }
+  .orderDetails {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+  .orderDetails > div {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .orderDetails > div :first-child {
+    border-right: 1px solid #fcb045;
+  }
+  .add__address__page > .formField {
+    grid-template-columns: 1fr 1fr;
+  }
+  .add__address__page > .gradient_background {
+    margin-bottom: 1rem;
+  }
+  .add__address__page > footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-content: stretch;
+  }
+  .closeAddress {
+    right: -5rem;
+  }
 }

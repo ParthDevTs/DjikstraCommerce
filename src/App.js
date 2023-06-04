@@ -10,6 +10,7 @@ import { Login } from "./pages/login";
 import { ProductList } from "./pages/ProductList";
 import { RequiresAuth } from "./components/RequiresAuth";
 import { OrderSummary } from "./pages/orderSummary";
+import { OrderConfirmation } from "./pages/orderConfirmationPage";
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
             element={
               <RequiresAuth>
                 <Wishlist />
+              </RequiresAuth>
+            }
+          ></Route>
+          <Route
+            path="/orderConfirmation"
+            element={
+              <RequiresAuth>
+                <OrderConfirmation />
               </RequiresAuth>
             }
           ></Route>

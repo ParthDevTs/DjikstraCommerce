@@ -177,7 +177,7 @@ link {
   font-size: 0.7rem;
   color: rgb(190, 190, 190);
 }
-.mainImageText > button {
+.fancyButton {
   font-size: 0.7rem;
   box-sizing: border-box;
   background-color: transparent;
@@ -192,10 +192,18 @@ link {
   border-bottom: 1px solid #fcb045;
   transition: border 100ms ease-in-out, background 200ms ease-in;
 }
-.mainImageText > button:hover {
+.fancyButton:hover {
   background: #fcb045;
   border-bottom: 1px solid white;
   color: white;
+}
+button:disabled {
+  color: grey;
+  background-color: darkgrey;
+}
+button:disabled:hover {
+  color: unset;
+  background-color: unset;
 }
 .image {
   height: 100%;

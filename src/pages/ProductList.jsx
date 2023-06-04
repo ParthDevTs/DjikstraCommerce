@@ -107,7 +107,7 @@ export const ProductList = () => {
               <select
                 defaultValue={filter}
                 onChange={filterHandler}
-                className="categorySelection"
+                className=""
               >
                 <option className="filterListOptions" value="All">
                   All

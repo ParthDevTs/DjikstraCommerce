@@ -41,7 +41,10 @@ export const Home = () => {
             <h1>Truthear Hexa</h1>
             <p>1 x Dynamic Driver + 3 x Balanced Armature</p>
             <p>Magic of 4 Drivers per side.</p>
-            <button onClick={() => navigate("/productList/filters/IEMs")}>
+            <button
+              className="fancyButton"
+              onClick={() => navigate("/productList/filters/IEMs")}
+            >
               Buy Here
             </button>
           </div>

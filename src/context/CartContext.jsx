@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { getAddresss } from "../database/addressDb";
 import React from "react";
 import { useAuthContext } from "./authContext";
+import { v4 as uuid } from "uuid";
 
 export const CartContext = createContext(null);
 
@@ -14,7 +15,11 @@ export const CartProvider = ({ children }) => {
   const { isLoggedIn } = useAuthContext();
   const [wishListCounter, setWishListCounter] = useState(0);
 
-  console.log(address);
+  const cartValue = cartProducts?.reduce(
+    (totalValue, { price, qty }) => totalValue + price * qty,
+    0
+  );
+
   const defaultHeader = {
     authorization: localStorage.getItem("encodedToken"),
   };
@@ -157,6 +162,13 @@ export const CartProvider = ({ children }) => {
     getCart();
   };
 
+  const addAddress = (newAddress) => {
+    setAddress([
+      ...address,
+      { ...newAddress, id: uuid(), person: localStorage.getItem("loginEmail") },
+    ]);
+  };
+
   useEffect(() => {
     const updateCounter = () => {
       setWishListCounter(wishlist?.reduce((total, curr) => total + 1, 0));
@@ -195,6 +207,8 @@ export const CartProvider = ({ children }) => {
         loginDataLoad,
         address,
         updateCartItem,
+        cartValue,
+        addAddress,
       }}
     >
       {children}

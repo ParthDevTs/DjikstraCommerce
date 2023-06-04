@@ -14,13 +14,9 @@ export const Cart = () => {
     getCart,
     showLoader,
     updateCartItem,
+    cartValue,
   } = useCart();
-  const [cartValue, setCartValue] = useState(
-    cartProducts?.reduce(
-      (totalValue, { price, qty }) => totalValue + price * qty,
-      0
-    )
-  );
+  const [dynamicCartValue, setDynamicCartValue] = useState(cartValue);
 
   // eslint-disable-next-line
   useEffect(() => {
@@ -60,7 +56,7 @@ export const Cart = () => {
           startValue -= inc;
         }
 
-        setCartValue(startValue);
+        setDynamicCartValue(startValue);
         if (startValue === endValue) {
           clearInterval(counter);
         }
@@ -77,7 +73,7 @@ export const Cart = () => {
           <h2>Total Amount</h2>
           <p className="totalValue numbers">
             {`Rs.
-            ${cartValue ?? 0}`}
+            ${dynamicCartValue ?? 0}`}
             {/* {`Rs.
             ${
               cartProducts?.reduce(
