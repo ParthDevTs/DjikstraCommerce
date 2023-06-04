@@ -6,7 +6,7 @@ import { useCart } from "../context/CartContext";
 export const Login = () => {
   const { logOut, logon, isLoggedIn } = useAuthContext();
   const { address } = useCart();
-  console.log(address);
+
   const loginHandler = () => {
     logon();
   };

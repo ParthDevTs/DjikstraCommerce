@@ -32,7 +32,7 @@ export const Cart = () => {
       0
     );
 
-    let startValue = cartValue;
+    let startValue = dynamicCartValue;
     let duration = Math.floor(interval / endValue);
     let inc = 10000;
 
@@ -62,6 +62,7 @@ export const Cart = () => {
         }
       }, duration);
     }
+
     // eslint-disable-next-line
   }, [cartProducts]);
   const navigate = useNavigate();
