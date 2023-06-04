@@ -9,6 +9,7 @@ import { ProductDetails } from "./pages/productDetials";
 import { Login } from "./pages/login";
 import { ProductList } from "./pages/ProductList";
 import { RequiresAuth } from "./components/RequiresAuth";
+import { OrderSummary } from "./pages/orderSummary";
 
 function App() {
   return (
@@ -45,6 +46,16 @@ function App() {
               </RequiresAuth>
             }
           ></Route>
+
+          <Route
+            path="/summary"
+            element={
+              <RequiresAuth>
+                <OrderSummary />
+              </RequiresAuth>
+            }
+          />
+
           <Route path="/mockman" element={<Mockman />} />
           <Route path="/login" element={<Login />} />
         </Routes>

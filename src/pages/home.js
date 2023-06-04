@@ -37,9 +37,18 @@ export const Home = () => {
             src="https://cdn.shopify.com/s/files/1/0153/8863/files/hexa_laptop.jpg?v=1683285676&width=1600"
             alt=""
           />
-          {/* <img className="image" src={tech} alt="" /> */}
+          <div className="mainImageText">
+            <h1>Truthear Hexa</h1>
+            <p>1 x Dynamic Driver + 3 x Balanced Armature</p>
+            <p>Magic of 4 Drivers per side.</p>
+            <button onClick={() => navigate("/productList/filters/IEMs")}>
+              Buy Here
+            </button>
+          </div>
         </div>
-        <h1 className="category__heading">Categories</h1>
+        <h1 className="category__heading">
+          <span className="gradient_background">Categories</span>
+        </h1>
         <div className="categoryList">
           <ul className="categories">
             {showLoader && (
@@ -76,15 +85,17 @@ export const Home = () => {
           </ul>
         </div>
 
-        <h1 className="collection__heading">New Launches</h1>
+        <h1 className="collection__heading">
+          <span className="gradient_background">Featured Products</span>
+        </h1>
 
         <div className="collections">
           <div
-            onClick={() => navigate("/productList")}
+            onClick={() => navigate("/productList/filters/IEMs")}
             className="wintercollection collection newLaunches_hexa"
           ></div>
           <div
-            onClick={() => navigate("/productList")}
+            onClick={() => navigate("/productList/filters/Headphones")}
             className="summerCollection collection newLaunches_focal"
           ></div>
         </div>

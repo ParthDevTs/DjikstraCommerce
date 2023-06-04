@@ -39,7 +39,13 @@ export const Cart = () => {
             }`}
           </p>
           <div className="actionItems">
-            <button className="buyNowButton btn">Buy Now</button>
+            <button
+              className="buyNowButton btn"
+              onClick={() => navigate("/summary")}
+              disabled={cartProducts.length < 1}
+            >
+              CheckOut
+            </button>
 
             <Link className="wishlistbtn btn " to="/wishlist">
               <button className=" wishlistLink">Go To Wishlist</button>

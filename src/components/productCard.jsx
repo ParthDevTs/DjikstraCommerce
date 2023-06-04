@@ -63,7 +63,10 @@ export const ProductCard = ({ item }) => {
       </div>
       <div className="newLaunch">{item.newLaunch ? "New Launch" : ""}</div>
       <footer>
-        <button onClick={addToCartHandler} className="addToCartBtn btn">
+        <button
+          onClick={!errorMessage ? addToCartHandler : navigate("/login")}
+          className="addToCartBtn btn"
+        >
           {addToCartLabel}
         </button>
         <button
@@ -71,7 +74,7 @@ export const ProductCard = ({ item }) => {
             background: disabledWishlist ? "red" : null,
             color: disabledWishlist ? "white" : null,
           }}
-          onClick={togglewishlist}
+          onClick={!errorMessage ? togglewishlist : navigate("/login")}
           className="wishListBtn btn"
         >
           {!disabledWishlist ? "Wish List" : "Wishlisted"}

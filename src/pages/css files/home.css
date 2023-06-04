@@ -61,7 +61,7 @@ link {
   position: relative;
   z-index: 1;
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.4rem rgb(150, 150, 150);
+  /* box-shadow: 0 0 0.4rem rgb(150, 150, 150); */
   font-size: 0.8rem;
 
   transition: background 200ms ease-in-out, filter 300ms ease-in-out;
@@ -75,6 +75,7 @@ link {
   text-shadow: 0 0 0.5rem black;
   font-size: 0.8rem;
   width: 100%;
+  transition: background 500ms ease-in;
 }
 .hero-image {
   position: absolute;
@@ -159,20 +160,46 @@ link {
   font-size: 2rem;
   color: white;
 }
-.mainImage:after {
-  content: "TruthEar Hexa";
-  text-align: left;
+.mainImageText {
   position: absolute;
-  top: 70%;
-  left: 30%;
-  bottom: 0;
-  right: 0;
-  z-index: 3;
+  color: white;
+  bottom: 5%;
+  right: 5%;
+  z-index: 2;
   font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: end; */
+}
+.mainImageText > h1 {
+  font-size: 1.5rem;
+  text-rendering: geometricPrecision;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.781);
+}
+.mainImageText > p {
+  font-size: 0.7rem;
+  color: rgb(190, 190, 190);
+}
+.mainImageText > button {
+  font-size: 0.7rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #fcb045;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  margin-top: 0.5rem;
+  /* border-radius: 0.5rem; */
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid #fcb045;
+  transition: border 100ms ease-in-out, background 200ms ease-in;
+}
+.mainImageText > button:hover {
+  background: #fcb045;
+  border-bottom: 1px solid white;
   color: white;
 }
-
 .image {
   height: 100%;
   width: 100%;
@@ -226,7 +253,7 @@ link {
   top: 50%;
   left: 50%;
   width: 100%;
-  padding: 0.5rem;
+  padding: 2rem;
   z-index: -1;
   content: "New Launch";
   font-family: "Montserrat", sans-serif;
@@ -237,7 +264,8 @@ link {
   backdrop-filter: blur(5px);
   border: 1px solid white;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 10px;
+  transition: all 200ms ease-in-out;
 }
 .newLaunches_focal {
   background: url("https://cdn.shopify.com/s/files/1/0153/8863/files/headphone-zone-focal-banner-desktop.jpg");
@@ -254,7 +282,7 @@ link {
   top: 50%;
   left: 50%;
   width: 100%;
-  padding: 0.5rem;
+  padding: 2rem;
   z-index: -1;
   content: "New Launch";
   font-family: "Montserrat", sans-serif;
@@ -265,11 +293,35 @@ link {
   font-weight: bold;
   backdrop-filter: blur(5px);
   border: 1px solid white;
-  border-radius: 6px;
+  border-radius: 10px;
+  transition: all 200ms ease-in-out;
+  box-shadow: 0.5rem 0.5rem 0.6rem rgba(0, 0, 0, 0.315);
 }
-.newLaunches_hexa:hover,
-.newLaunches_focal:hover {
-  filter: blur(5px);
+.newLaunches_hexa:hover::before,
+.newLaunches_focal:hover::before {
+  backdrop-filter: blur(10px);
+}
+
+.gradient_background {
+  background: #833ab4;
+
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #fcb045,
+    #fd1d1d,
+    #833ab4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fcb045,
+    #fd1d1d,
+    #833ab4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-clip: text;
+  color: transparent;
+  box-sizing: content-box;
 }
 
 @media (min-width: 700px) {
@@ -299,6 +351,18 @@ link {
   .mainImage:before {
     font-size: 3rem;
   }
+
+  .mainImageText > h1 {
+    font-size: 5rem;
+  }
+  .mainImageText > p {
+    font-size: 1rem;
+    text-align: right;
+  }
+  .mainImageText > button {
+    font-size: 1rem;
+    font-weight: unset;
+  }
 }
 
 @media only screen and (min-width: 1340px) {
@@ -311,6 +375,12 @@ link {
     max-width: 1340px;
     justify-self: center;
     justify-content: space-between;
+  }
+  .collection__heading,
+  .category__heading {
+    text-transform: capitalize;
+    font-weight: 800;
+    font-size: 3rem;
   }
 
   .categories {
