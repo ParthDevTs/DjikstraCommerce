@@ -26,7 +26,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPhone 11",
-    price: 51000,
+    price: 51990,
     salePrice: "",
     memory: 64,
     currency: "INR",
@@ -40,7 +40,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPhone 12",
-    price: 61000,
+    price: 61990,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -59,7 +59,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPhone SE",
-    price: 37999,
+    price: 37990,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -78,7 +78,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPhone 13",
-    price: 71999,
+    price: 71099,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -97,7 +97,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Galaxy Tab S8",
-    price: 50999,
+    price: 50099,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -110,7 +110,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPad",
-    price: 40999,
+    price: 41099,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -129,7 +129,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPad Air",
-    price: 55999,
+    price: 53999,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -148,7 +148,7 @@ export const products = [
   {
     _id: uuid(),
     name: "iPad Pro",
-    price: 120999,
+    price: 121990,
     salePrice: "",
     memory: 128,
     currency: "INR",
@@ -167,7 +167,7 @@ export const products = [
   {
     _id: uuid(),
     name: "MoonDrop Blessings 3",
-    price: 29990,
+    price: 28999,
     salePrice: "",
     memory: null,
     currency: "INR",
@@ -180,7 +180,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Moondrop - Variations",
-    price: 49999,
+    price: 49990,
     salePrice: "",
     memory: null,
     currency: "INR",
@@ -206,7 +206,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Truthear - HEXA",
-    price: 6999,
+    price: 7000,
     salePrice: "",
     memory: null,
     currency: "INR",
@@ -219,7 +219,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Focal - Clear MG",
-    price: 99990,
+    price: 99999,
     salePrice: "",
     memory: null,
     currency: "INR",
@@ -232,7 +232,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Audeze - LCD-X",
-    price: 109990,
+    price: 105990,
     salePrice: "",
     memory: null,
     currency: "INR",
@@ -245,7 +245,7 @@ export const products = [
   {
     _id: uuid(),
     name: "RAAL - SR1a",
-    price: 349999,
+    price: 330599,
     salePrice: "",
     memory: null,
     currency: "INR",

@@ -40,7 +40,10 @@ export const Navbar = () => {
           to="/wishlist"
         >
           <span className="icons">&#10084;</span>
-          <span className="numbers navCartNum">
+          <span
+            style={{ display: wishListCounter > 0 ? "" : "none" }}
+            className="numbers navCartNum"
+          >
             {wishListCounter ? wishListCounter : 0}
           </span>
         </NavLink>
@@ -51,7 +54,12 @@ export const Navbar = () => {
         >
           {" "}
           <span className="icons">&#128722;</span>
-          <span className="numbers navCartNum">{itemsNum ? itemsNum : 0}</span>
+          <span
+            style={{ display: itemsNum > 0 ? "" : "none" }}
+            className="numbers navCartNum"
+          >
+            {itemsNum ? itemsNum : 0}
+          </span>
         </NavLink>
         {!isLoggedIn && (
           <NavLink
@@ -89,7 +97,11 @@ export const Navbar = () => {
           </NavLink>
           <NavLink className="navLink" style={getActiveStyle} to="/wishlist">
             <span className="icons">&#10084;</span>
-            <span className="numbers navCartNum">
+
+            <span
+              style={{ display: wishListCounter > 0 ? "" : "none" }}
+              className="numbers navCartNum"
+            >
               {wishListCounter ? wishListCounter : 0}
             </span>
           </NavLink>
@@ -100,7 +112,10 @@ export const Navbar = () => {
           >
             {" "}
             <span className="icons">&#128722;</span>
-            <span className="numbers navCartNum">
+            <span
+              style={{ display: itemsNum > 0 ? "" : "none" }}
+              className="numbers navCartNum"
+            >
               {itemsNum ? itemsNum : 0}
             </span>
           </NavLink>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Dna } from "react-loader-spinner";
@@ -15,6 +15,13 @@ export const Cart = () => {
     showLoader,
     updateCartItem,
   } = useCart();
+  const [cartValue, setCartValue] = useState(
+    cartProducts?.reduce(
+      (totalValue, { price, qty }) => totalValue + price * qty,
+      0
+    )
+  );
+
   // eslint-disable-next-line
   useEffect(() => {
     // eslint-disable-next-line
@@ -22,6 +29,45 @@ export const Cart = () => {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    let interval = 10000;
+    const endValue = cartProducts?.reduce(
+      (totalValue, { price, qty }) => totalValue + price * qty,
+      0
+    );
+
+    let startValue = cartValue;
+    let duration = Math.floor(interval / endValue);
+    let inc = 10000;
+
+    if (startValue !== endValue) {
+      let counter = setInterval(() => {
+        if (Math.abs(startValue - endValue) % 10000 === 0) {
+          inc = 10000;
+        } else if (Math.abs(startValue - endValue) % 1000 === 0) {
+          inc = 1000;
+        } else if (Math.abs(startValue - endValue) % 100 === 0) {
+          inc = 100;
+        } else if (Math.abs(startValue - endValue) % 10 === 0) {
+          inc = 10;
+        } else if (Math.abs(startValue - endValue) % 1 === 0) {
+          inc = 1;
+        }
+
+        if (startValue < endValue) {
+          startValue += inc;
+        } else {
+          startValue -= inc;
+        }
+
+        setCartValue(startValue);
+        if (startValue === endValue) {
+          clearInterval(counter);
+        }
+      }, duration);
+    }
+    // eslint-disable-next-line
+  }, [cartProducts]);
   const navigate = useNavigate();
 
   return (
@@ -31,12 +77,14 @@ export const Cart = () => {
           <h2>Total Amount</h2>
           <p className="totalValue numbers">
             {`Rs.
+            ${cartValue ?? 0}`}
+            {/* {`Rs.
             ${
               cartProducts?.reduce(
                 (totalValue, { price, qty }) => totalValue + price * qty,
                 0
               ) ?? 0
-            }`}
+            }`} */}
           </p>
           <div className="actionItems">
             <button
