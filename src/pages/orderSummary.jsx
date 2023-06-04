@@ -201,7 +201,9 @@ export const OrderSummary = () => {
           </div>
           <footer>
             <button
-              onClick={() => navigate("/orderConfirmation")}
+              onClick={() => {
+                navigate("/orderConfirmation");
+              }}
               className="fancyButton"
             >
               Buy Now
