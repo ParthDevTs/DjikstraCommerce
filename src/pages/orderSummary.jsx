@@ -3,8 +3,9 @@ import { useCart } from "../context/CartContext";
 import "./css files/orderSummary.css";
 import { useNavigate } from "react-router-dom";
 export const OrderSummary = () => {
-  const { address, cartValue, addAddress } = useCart();
+  const { address, cartValue, addAddress, orderHandler } = useCart();
   const [displayAddAddress, setDisplayAddAddress] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState();
   const addressObj = {
     type: "",
     addressLine1: "",
@@ -20,6 +21,10 @@ export const OrderSummary = () => {
     const value = event.target.value;
     const name = event.target.name;
     setUserAddress({ ...userAddress, [name]: value });
+  };
+
+  const handleSelectedAddress = (event) => {
+    setSelectedAddress(event.target.value);
   };
 
   return (
@@ -185,12 +190,14 @@ export const OrderSummary = () => {
                 className="addressSelection"
                 name="address__selection"
                 id="address__selection"
+                onChange={handleSelectedAddress}
               >
+                <option></option>
                 {address.map((address) => {
                   return (
                     <option
                       className="address__selection__option"
-                      value={address.type}
+                      value={address.id}
                     >
                       {address.type}
                     </option>
@@ -202,6 +209,7 @@ export const OrderSummary = () => {
           <footer>
             <button
               onClick={() => {
+                orderHandler(selectedAddress);
                 navigate("/orderConfirmation");
               }}
               className="fancyButton"

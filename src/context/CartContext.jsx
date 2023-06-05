@@ -14,6 +14,10 @@ export const CartProvider = ({ children }) => {
   const [address, setAddress] = useState([]);
   const { isLoggedIn } = useAuthContext();
   const [wishListCounter, setWishListCounter] = useState(0);
+  const [orderProducts, setOrdererdProduts] = useState({
+    orderedAddress: {},
+    orderArray: [],
+  });
 
   const cartValue = cartProducts?.reduce(
     (totalValue, { price, qty }) => totalValue + price * qty,
@@ -169,6 +173,18 @@ export const CartProvider = ({ children }) => {
     ]);
   };
 
+  const orderHandler = (selectedAddress) => {
+    let addressObj = address.find(({ id }) => (id = selectedAddress));
+    let orderArray = cartProducts;
+
+    setOrdererdProduts({
+      orderedAddress: addressObj,
+      orderArray: orderArray,
+    });
+
+    orderArray.map((item) => removeFromCart(item));
+  };
+
   useEffect(() => {
     const updateCounter = () => {
       setWishListCounter(wishlist?.reduce((total, curr) => total + 1, 0));
@@ -209,6 +225,8 @@ export const CartProvider = ({ children }) => {
         updateCartItem,
         cartValue,
         addAddress,
+        orderHandler,
+        orderProducts,
       }}
     >
       {children}
