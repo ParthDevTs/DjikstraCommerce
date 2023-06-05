@@ -15,7 +15,6 @@ export const OrderConfirmation = () => {
     addressLine2,
     city,
     state,
-    isDefault,
     pincode,
   } = orderedAddress;
 
