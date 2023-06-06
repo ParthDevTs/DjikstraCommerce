@@ -329,6 +329,7 @@ Footer {
   gap: 0.5rem;
   width: 80%;
   justify-self: center;
+  box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.15);
 }
 .sub__slogan {
   text-align: center;
