@@ -15,7 +15,7 @@ export const Wishlist = () => {
 
   return (
     <div className="wishlist">
-      <h1 className="wishlistHeading">Wishlist</h1>
+      <h1 className=" wishlistHeading  ">Wishlist</h1>
       {showLoader && (
         <div className="spinner-box">
           <Dna

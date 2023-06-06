@@ -11,10 +11,12 @@ export function AuthProvider({ children }) {
   const { resetCounters, loginDataLoad } = useCart();
 
   const logon = async () => {
+    let id = toast.loading("Logging In");
     const creds = {
       email: "abc@gmail.com",
       password: "abc",
     };
+
     await fetch("/api/auth/login", {
       method: "POST",
       body: JSON.stringify(creds),
@@ -26,9 +28,13 @@ export function AuthProvider({ children }) {
         setIsLoggedIn(true);
         navigate(location?.state?.from?.pathname);
         loginDataLoad();
-        toast.success("Logged In Successfully");
+        toast.done(id);
+        toast.success("Logged In");
       })
-      .catch((e) => toast.error("Some Error Occured"));
+      .catch((e) => {
+        toast.done(id);
+        toast.error("Some error Occured");
+      });
   };
 
   const logOut = () => {

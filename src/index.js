@@ -18,7 +18,8 @@ ReactDOM.render(
         <AuthProvider>
           <App />
           <ToastContainer
-            autoClose={1000}
+            autoClose={2000}
+            position={"bottom-left"}
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           />
         </AuthProvider>
