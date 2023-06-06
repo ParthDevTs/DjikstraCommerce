@@ -1,55 +1,56 @@
-footer {
+.mainFooter {
   grid-area: footer;
 }
-footer {
+.mainFooter {
   background-color: black;
   color: white;
   bottom: 0;
   width: 100%;
   font-size: 16px;
 }
-footer * {
+.mainFooter * {
   box-sizing: border-box;
   border: none;
   outline: none;
 }
-.row {
+.mainFooter > .row {
   padding: 1em 1em;
 }
-.row.primary {
+.mainFooter > .row.primary {
   display: grid;
   grid-template-columns: 3fr 2fr 4fr;
   align-items: stretch;
 }
-.column {
+.primary > .column {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 0 2em;
   min-height: 15em;
 }
-h3 {
+.about,
+.link > h3 {
   width: 100%;
   text-align: left;
   color: white;
   font-size: 1.4em;
   white-space: nowrap;
 }
-ul {
+.mainFooter > ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   padding: 0;
   margin: 0;
 }
-li:not(:first-child) {
+.mainFooter > li:not(:first-child) {
   margin-top: 0.8em;
 }
-ul li a {
+.link > ul li a {
   color: #a7a7a7;
   text-decoration: none;
 }
-ul li a:hover {
+.link > ul li a:hover {
   color: #c7940a;
 }
 .about p {
@@ -57,15 +58,15 @@ ul li a:hover {
   line-height: 2;
   margin: 0;
 }
-input,
-button {
+.subscribe > div > input,
+.subscribe > div > button {
   font-size: 1em;
   padding: 1em;
   width: 100%;
   border-radius: 5px;
   margin-bottom: 5px;
 }
-button {
+.subscribe > div > button {
   background-color: #c7940a;
   color: #ffffff;
 }
@@ -101,7 +102,7 @@ div.social {
   text-align: right;
 }
 @media screen and (max-width: 850px) {
-  .row.primary {
+  .mainFooter > .row.primary {
     grid-template-columns: 1fr;
   }
 }

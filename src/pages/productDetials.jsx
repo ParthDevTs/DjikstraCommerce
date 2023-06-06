@@ -82,7 +82,7 @@ export const ProductDetails = () => {
           <div className="detailsWindow">
             <h1>{name}</h1>
             <h2 className="numbers">Rs. {price}</h2>
-            <h3>
+            <h3 style={{ color: "black" }}>
               Category: <span style={{ color: "#2874f0" }}>{category}</span>
             </h3>
             {memory !== null ? (

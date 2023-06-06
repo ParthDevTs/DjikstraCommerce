@@ -18,7 +18,7 @@
 .order {
   background: white;
   padding: 2rem;
-  display: grid;
+  /* display: grid; */
   gap: 3rem;
   border-radius: 1rem;
 }
@@ -69,7 +69,7 @@
 }
 
 .add__address__page {
-  display: grid;
+  /* display: grid; */
   position: relative;
   background-color: white;
   padding: 2rem 2rem;

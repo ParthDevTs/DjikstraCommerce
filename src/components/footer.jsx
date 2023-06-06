@@ -1,7 +1,7 @@
 import "./styles/footer.css";
 export const Footer = () => {
   return (
-    <footer>
+    <footer className="mainFooter">
       <div className="row primary">
         <div className="column about">
           <h3>Connect</h3>
@@ -14,23 +14,32 @@ export const Footer = () => {
           <h3>Links</h3>
           <ul>
             <li>
-              <a target="_blank" href="https://github.com/ParthDevTs">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/ParthDevTs"
+              >
                 Github
               </a>
             </li>
             <li>
-              <a target="_blank" href="https://www.instagram.com/parth.ts/">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.instagram.com/parth.ts/"
+              >
                 Instagram
               </a>
             </li>
             <li>
-              <a target="_blank" href="#blogs">
+              <a target="_blank" rel="noreferrer" href="#blogs">
                 Twitter
               </a>
             </li>
             <li>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://www.linkedin.com/in/parth-kathuria-4b0856177/"
               >
                 LinkedIn
