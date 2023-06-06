@@ -17,6 +17,7 @@ link {
   display: flex;
   justify-content: stretch;
   align-items: center;
+  flex-direction: column;
 }
 .homepage {
   padding-bottom: 2rem;
@@ -233,13 +234,19 @@ button:disabled:hover {
   padding: 8rem;
   width: 80%;
 }
+Footer {
+  grid-area: footer;
+  width: 100%;
+}
+
 .homepage {
   grid-template-areas:
     "mainImage"
     "categoryheading"
     "category"
     "collectionHeading"
-    "collection";
+    "collection"
+    "footer";
 }
 
 .newLaunches_hexa {

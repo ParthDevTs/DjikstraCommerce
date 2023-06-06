@@ -3,6 +3,7 @@ import "./css files/home.css";
 import { Dna } from "react-loader-spinner";
 // import tech from "../assets/tech.avif";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../components/footer";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -103,6 +104,7 @@ export const Home = () => {
           ></div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
