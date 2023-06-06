@@ -170,7 +170,7 @@ link {
   z-index: 2;
   display: grid;
   place-content: start;
-  background-color: #30303060;
+  background-color: #7c7c7c42;
   font-size: 2rem;
   color: white;
 }
