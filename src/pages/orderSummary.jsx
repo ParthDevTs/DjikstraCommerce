@@ -60,7 +60,7 @@ export const OrderSummary = () => {
                 value={userAddress.addressLine1}
                 type="text"
                 name="addressLine1"
-                autoComplete="addressLine1"
+                autoComplete="address line 1"
                 id="addressLine1"
               />
             </div>
@@ -71,7 +71,7 @@ export const OrderSummary = () => {
                 value={userAddress.addressLine2}
                 type="text"
                 name="addressLine2"
-                autoComplete="addressLine2"
+                autoComplete="address line 2"
                 id="addressLine2"
               />
             </div>
