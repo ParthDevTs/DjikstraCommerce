@@ -4,14 +4,14 @@ import "./styles/navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-  const { cartProducts, wishListCounter } = useCart();
+  const { cartProducts, wishListCounter, setNavbarSearchItem } = useCart();
   const { isLoggedIn } = useAuthContext();
 
   const itemsNum = cartProducts?.reduce((total, curr) => total + curr.qty, 0);
 
   const navigate = useNavigate();
   const getActiveStyle = ({ isActive }) => ({
-    color: isActive ? "#e6d8d8" : "",
+    color: isActive ? "red" : "",
   });
 
   return (
@@ -23,9 +23,16 @@ export const Navbar = () => {
           className="logo"
         >
           Djikstra
-          <span style={{ color: "#e6d8d8" }}>Commerce</span>
+          <span style={{ color: "#658df2" }}>Express</span>
         </span>
         <div className="spacer"></div>
+        <input
+          placeholder="Search Item"
+          className="nav__textinput navLink"
+          type="text"
+          onClick={() => navigate("/productList")}
+          onChange={(event) => setNavbarSearchItem(event.target.value)}
+        />
 
         <NavLink
           className="navLink mainBar"

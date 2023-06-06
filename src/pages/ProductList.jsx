@@ -6,11 +6,11 @@ import "./css files/productList.css";
 import { useParams } from "react-router-dom";
 
 export const ProductList = () => {
-  const { setProductList, productList } = useCart();
+  const { setProductList, productList, navbarSearchItem, setNavbarSearchItem } =
+    useCart();
   const [localproductList, setLocalproductList] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
   const [filteredPrice, SetFilteredPrice] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
   const [listsort, setListSort] = useState("a-z");
 
   const handlePriceFilter = (event) => {
@@ -41,9 +41,9 @@ export const ProductList = () => {
   };
 
   const searchList = (item) => {
-    return searchTerm.toLowerCase() === ""
+    return navbarSearchItem.toLowerCase() === ""
       ? item
-      : item.name.toLowerCase().includes(searchTerm);
+      : item.name.toLowerCase().includes(navbarSearchItem);
   };
   const { filter } = useParams();
 
@@ -94,7 +94,7 @@ export const ProductList = () => {
   const handlereset = () => {
     SetFilteredPrice(0);
     filterProductList("All");
-    setSearchTerm("");
+    setNavbarSearchItem("");
     setListSort("a-z");
   };
   return (
@@ -145,15 +145,7 @@ export const ProductList = () => {
               />
             </div>
             <div className="lineBreak"></div>
-            <div className="searchbox">
-              <p className="filterHeading">Search Item</p>
-              <input
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-                type="text"
-              />
-            </div>
-            <div className="lineBreak"></div>
+
             <div className="category__filter">
               <p className="filterHeading">Sorting</p>
               <select

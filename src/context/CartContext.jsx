@@ -19,6 +19,7 @@ export const CartProvider = ({ children }) => {
     orderedAddress: {},
     orderArray: [],
   });
+  const [navbarSearchItem, setNavbarSearchItem] = useState("");
 
   const cartValue = cartProducts?.reduce(
     (totalValue, { price, qty }) => totalValue + price * qty,
@@ -249,6 +250,8 @@ export const CartProvider = ({ children }) => {
         addAddress,
         orderHandler,
         orderProducts,
+        setNavbarSearchItem,
+        navbarSearchItem,
       }}
     >
       {children}
