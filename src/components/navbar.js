@@ -4,11 +4,15 @@ import "./styles/navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-  const { cartProducts, wishListCounter, setNavbarSearchItem } = useCart();
+  const {
+    cartProducts,
+    wishListCounter,
+    setNavbarSearchItem,
+    navbarSearchItem,
+  } = useCart();
   const { isLoggedIn } = useAuthContext();
 
   const itemsNum = cartProducts?.reduce((total, curr) => total + curr.qty, 0);
-
   const navigate = useNavigate();
   const getActiveStyle = ({ isActive }) => ({
     color: isActive ? "red" : "",
@@ -32,6 +36,7 @@ export const Navbar = () => {
           type="text"
           onClick={() => navigate("/productList")}
           onChange={(event) => setNavbarSearchItem(event.target.value)}
+          value={navbarSearchItem}
         />
 
         <NavLink
