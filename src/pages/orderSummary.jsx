@@ -35,9 +35,9 @@ export const OrderSummary = () => {
             <h3 className="gradient_background">Add A New Address</h3>
             <button
               onClick={() => setDisplayAddAddress(false)}
-              className="closeAddress fancyButton"
+              className=" fancyButton closeAddress"
             >
-              close
+              &#10006;
             </button>
 
             <div className="formField">
@@ -172,18 +172,6 @@ export const OrderSummary = () => {
         <div className="order">
           <h3 className="gradient_background">Order Summary</h3>
           <div className="orderDetails">
-            <div className="cart__value">
-              <p>Cart Value</p>
-              <p className="numbers">Rs. {cartValue}</p>
-            </div>
-            <div className="shipping__charges">
-              <p>Shipping Charges</p>
-              <p className="numbers">Rs. 250</p>
-            </div>
-            <div className="totalCharges">
-              <p>Total Charges </p>
-              <p className="numbers">Rs. {cartValue + 250}</p>
-            </div>
             <div className="totalCharges">
               <p>Select Address </p>
               <select
@@ -205,6 +193,18 @@ export const OrderSummary = () => {
                 })}
               </select>
             </div>
+            <div className="cart__value">
+              <p>Cart Value</p>
+              <p className="numbers">Rs. {cartValue}</p>
+            </div>
+            <div className="shipping__charges">
+              <p>Shipping Charges</p>
+              <p className="numbers">Rs. 250</p>
+            </div>
+            <div className="totalCharges">
+              <p>Total Charges </p>
+              <p className="numbers">Rs. {cartValue + 250}</p>
+            </div>
           </div>
           <footer>
             <button
@@ -216,7 +216,9 @@ export const OrderSummary = () => {
             >
               Buy Now
             </button>
-            <button className="fancyButton">Cancel</button>
+            <button onClick={() => navigate("/cart")} className="fancyButton">
+              Cancel
+            </button>
           </footer>
         </div>
       </div>

@@ -72,26 +72,32 @@
   display: grid;
   position: relative;
   background-color: white;
-  padding: 1rem;
+  padding: 2rem 2rem;
   border-radius: 1rem;
   margin-top: 3rem;
 }
-/* .add__address__page :first-child {
-  margin-top: 0.5rem;
+.add__address__page > .gradient_background {
   margin-bottom: 1rem;
-} */
+}
+.add__address__page > .formField > input {
+  border: #fcb045 solid 1px;
+  border-radius: 10px;
+}
+
 .closeAddress {
   position: absolute;
-  top: 1rem;
-  right: -4rem;
-  padding: 1rem;
+  top: 1%;
+  right: 5%;
+
   background-color: white;
   border-radius: 50%;
+  box-shadow: none;
 }
 .add__address__page > .formField {
   font-size: 1rem;
   display: grid;
   grid-template-columns: 1fr;
+  justify-content: start;
 }
 
 .allAddresses {
@@ -147,9 +153,10 @@
   }
   .add__address__page > .formField {
     grid-template-columns: 1fr 1fr;
+    align-items: center;
   }
   .add__address__page > .gradient_background {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   .add__address__page > footer {
     display: grid;
@@ -157,6 +164,7 @@
     place-content: stretch;
   }
   .closeAddress {
-    right: -5rem;
+    top: 1%;
+    right: 5%;
   }
 }

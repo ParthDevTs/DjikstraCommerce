@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "./CartContext";
+import { toast } from "react-toastify";
 export const AuthContext = createContext({ isLoggedIn: false });
 
 export function AuthProvider({ children }) {
@@ -25,14 +26,16 @@ export function AuthProvider({ children }) {
         setIsLoggedIn(true);
         navigate(location?.state?.from?.pathname);
         loginDataLoad();
+        toast.success("Logged In Successfully");
       })
-      .catch((e) => console.error(e));
+      .catch((e) => toast.error("Some Error Occured"));
   };
 
   const logOut = () => {
     resetCounters();
     setIsLoggedIn(false);
     localStorage.removeItem("encodedToken");
+    toast.success("Logged Out In Successfully");
   };
 
   return (

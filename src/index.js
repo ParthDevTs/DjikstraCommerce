@@ -6,7 +6,8 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/authContext";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Call make Server
 makeServer();
 
@@ -16,6 +17,10 @@ ReactDOM.render(
       <CartProvider>
         <AuthProvider>
           <App />
+          <ToastContainer
+            autoClose={1000}
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          />
         </AuthProvider>
       </CartProvider>
     </BrowserRouter>

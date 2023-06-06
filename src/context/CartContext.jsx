@@ -3,6 +3,7 @@ import { getAddresss } from "../database/addressDb";
 import React from "react";
 import { useAuthContext } from "./authContext";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-toastify";
 
 export const CartContext = createContext(null);
 
@@ -41,7 +42,10 @@ export const CartProvider = ({ children }) => {
       .then((data) => {
         setWishList(data.wishlist);
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        toast("Some Error Occured");
+      });
     setShowLoader(false);
   };
 
@@ -59,7 +63,9 @@ export const CartProvider = ({ children }) => {
         .then((res) => res.json())
         .then(async (data) => {
           setWishList(await data.wishlist);
-        });
+          toast(`${item.name} Added to Wishlist`);
+        })
+        .catch((e) => toast("Some error occured"));
     }
   };
 
@@ -74,7 +80,9 @@ export const CartProvider = ({ children }) => {
       .then((res) => res.json())
       .then(async (data) => {
         setWishList(await data.wishlist);
-      });
+        toast(`${item.name} Removed from Wishlist`);
+      })
+      .catch((e) => toast("Some error occured"));
   };
 
   const getCart = async () => {
@@ -90,7 +98,7 @@ export const CartProvider = ({ children }) => {
       .then((data) => {
         setCartProducts(data.cart);
       })
-      .catch((e) => console.error(e));
+      .catch((e) => toast("Some error occured"));
     setShowLoader(false);
   };
 
@@ -104,7 +112,9 @@ export const CartProvider = ({ children }) => {
       .then((res) => res.json())
       .then(async (data) => {
         setCartProducts(await data.cart);
-      });
+        toast(`${item.name} Added to Cart`);
+      })
+      .catch((e) => toast("Some error occured"));
   };
 
   const updateCartItem = async (item, action, header = defaultHeader) => {
@@ -122,7 +132,9 @@ export const CartProvider = ({ children }) => {
       .then((res) => res.json())
       .then(async (data) => {
         setCartProducts(await data.cart);
-      });
+        toast(`${item.name} ${action === "increment" ? "+ 1" : "- 1"}`);
+      })
+      .catch((e) => toast("Some error occured"));
   };
 
   const addToCart = async (item) => {
@@ -153,7 +165,9 @@ export const CartProvider = ({ children }) => {
       .then((res) => res.json())
       .then(async (data) => {
         setCartProducts(await data.cart);
-      });
+        toast(`${item.name} removed from Cart`);
+      })
+      .catch((e) => toast("Some error occured"));
   };
 
   const resetCounters = () => {
@@ -171,6 +185,7 @@ export const CartProvider = ({ children }) => {
       ...address,
       { ...newAddress, id: uuid(), person: localStorage.getItem("loginEmail") },
     ]);
+    toast(`${newAddress.type} added.`);
   };
 
   const orderHandler = (selectedAddress) => {
@@ -181,6 +196,8 @@ export const CartProvider = ({ children }) => {
       orderedAddress: addressObj,
       orderArray: orderArray,
     });
+
+    toast("Order Completed");
 
     orderArray.map((item) => removeFromCart(item));
   };

@@ -138,8 +138,10 @@ ProductCard {
   grid-template-columns: 1fr 1fr;
   padding: 1rem 0 1rem 0;
   margin: 0;
-  place-items: center;
+  align-items: start;
+  justify-content: start;
   box-sizing: border-box;
+  row-gap: 0.5rem;
 }
 
 @media only screen and (min-width: 900px) {
@@ -157,6 +159,7 @@ ProductCard {
 
     padding: 1rem 1rem 1rem 2rem;
     place-items: unset;
+    row-gap: 0.5rem;
   }
   .filterHeading {
     font-size: 0.6rem;
@@ -166,5 +169,6 @@ ProductCard {
 @media only screen and (min-width: 1280px) {
   .productList {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 0.5rem;
   }
 }

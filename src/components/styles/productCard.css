@@ -2,9 +2,9 @@
 .productListItem {
   list-style: none;
   background-color: white;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+
   width: 11rem;
+
   height: 20rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.1rem rgb(155, 155, 155);
@@ -12,6 +12,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  justify-self: center;
   z-index: 1;
   position: relative;
 }
@@ -152,6 +154,7 @@
   }
   .productListItem {
     width: 15rem;
+
     height: 22rem;
   }
 }

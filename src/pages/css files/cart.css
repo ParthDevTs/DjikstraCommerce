@@ -191,7 +191,7 @@
 .actionItems {
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 1rem;
 }
@@ -265,7 +265,7 @@
     flex-direction: row;
     padding: 0.4rem;
     gap: 0.4rem;
-    height: 6rem;
+    height: 8rem;
     max-width: 900px;
     justify-content: space-between;
 
@@ -276,7 +276,7 @@
   }
   .cartProduct > img {
     max-height: unset;
-    max-width: 5rem;
+    max-width: 8rem;
   }
   .cartProduct > .content {
     max-width: 10rem;
