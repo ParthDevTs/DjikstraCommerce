@@ -5,7 +5,6 @@
 }
 .navStyle {
   background-color: white;
-  /* background: rgba(0, 0, 0, 0.493); */
   height: 4rem;
   box-shadow: 0 0 10px rgb(110, 110, 110);
   z-index: 2;
@@ -51,7 +50,14 @@
 }
 .nav__textinput {
   max-width: 30rem;
+  font-family: "Montserrat", sans-serif;
+  border: whtie 1px solid;
 }
+.nav__textinput:focus,
+.nav__textinput::selection {
+  border: #658df2 1px solid;
+}
+
 .logo {
   color: #a4a4a4;
   /* color: white; */

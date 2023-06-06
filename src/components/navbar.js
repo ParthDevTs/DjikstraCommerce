@@ -27,7 +27,7 @@ export const Navbar = () => {
         </span>
         <div className="spacer"></div>
         <input
-          placeholder="Search Item"
+          placeholder="Search Item &#128269;"
           className="nav__textinput navLink"
           type="text"
           onClick={() => navigate("/productList")}
