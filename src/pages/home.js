@@ -50,58 +50,71 @@ export const Home = () => {
             </button>
           </div>
         </div>
-        <h1 className="category__heading">
-          <span className="gradient_background">Categories</span>
-        </h1>
-        <div className="categoryList">
-          <ul className="categories">
-            {showLoader && (
-              <div className="spinner-box">
-                <Dna
-                  className="spinner"
-                  visible={true}
-                  height="100"
-                  width="100"
-                  ariaLabel="dna-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="dna-wrapper"
-                />
-              </div>
-            )}
-            {categories.map((category) => {
-              const { categoryName, description, url } = category;
-              return (
-                <li
-                  key={categoryName}
-                  className="category"
-                  onClick={() =>
-                    navigate(`/productList/filters/${categoryName}`)
-                  }
-                >
-                  <p className="categoryLabel">{categoryName}</p>
-                  <p className="hoverText">{description} &#x2192;</p>
-                  <div className="hero-image">
-                    <img className="image" src={url} alt="" />
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+        <div className="category__section">
+          <h1 className="category__heading">Categories</h1>
+          <div className="categoryList">
+            <ul className="categories">
+              {showLoader && (
+                <div className="spinner-box">
+                  <Dna
+                    className="spinner"
+                    visible={true}
+                    height="100"
+                    width="100"
+                    ariaLabel="dna-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="dna-wrapper"
+                  />
+                </div>
+              )}
+              {categories.map((category) => {
+                const { categoryName, description, url } = category;
+                return (
+                  <li
+                    key={categoryName}
+                    className="category"
+                    onClick={() =>
+                      navigate(`/productList/filters/${categoryName}`)
+                    }
+                  >
+                    <p className="categoryLabel">{categoryName}</p>
+                    <p className="hoverText">{description} &#x2192;</p>
+                    <div className="hero-image">
+                      <img className="image" src={url} alt="" />
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
+        <div className="slogan__section">
+          <div className="slogan__box">
+            <p className="sub__slogan">
+              Looking for Latest and Greatest in Tech World?
+            </p>
+            <p className="main__slogan">We Have got you covered!</p>
+          </div>
+        </div>
+        <div className="collection__section">
+          <h1 className="collection__heading">
+            <span className="">Featured Products</span>
+          </h1>
 
-        <h1 className="collection__heading">
-          <span className="gradient_background">Featured Products</span>
-        </h1>
-
-        <div className="collections">
-          <div
-            onClick={() => navigate("/productList/filters/IEMs")}
-            className="wintercollection collection newLaunches_hexa"
-          ></div>
-          <div
-            onClick={() => navigate("/productList/filters/Headphones")}
-            className="summerCollection collection newLaunches_focal"
-          ></div>
+          <div className="collections">
+            <div
+              onClick={() => navigate("/productList/filters/Headphones")}
+              className=" collection newLaunches_1"
+            ></div>
+            <div
+              onClick={() => navigate("/productList/filters/Headphones")}
+              className=" collection newLaunches_2"
+            ></div>
+            <div
+              onClick={() => navigate("/productList/filters/IEMs")}
+              className=" collection newLaunches_3"
+            ></div>
+          </div>
         </div>
       </div>
       <Footer />

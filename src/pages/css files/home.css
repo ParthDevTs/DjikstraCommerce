@@ -27,18 +27,27 @@ link {
   width: 100%;
   position: relative;
 }
+
+.category__section {
+  grid-area: category;
+  margin: 5rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  align-items: center;
+  justify-content: center;
+}
 .category__heading {
-  grid-area: categoryheading;
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  text-align: left;
+
+  align-self: center;
+  justify-self: center;
 }
 .categoryList {
-  grid-area: category;
+  display: grid;
   width: 100%;
   height: 100%;
   place-items: center;
-  margin-bottom: 2rem;
 }
 
 .categories {
@@ -49,25 +58,27 @@ link {
   place-items: stretch;
   width: 100%;
   min-height: 10rem;
+  border-radius: 10px;
 }
 .category {
   box-sizing: border-box;
   display: grid;
   place-content: center;
-  height: 10rem;
-  width: 10rem;
 
   background-color: #ffffff;
   place-self: center;
   position: relative;
   z-index: 1;
   border-radius: 0.5rem;
-  /* box-shadow: 0 0 0.4rem rgb(150, 150, 150); */
   font-size: 0.8rem;
 
   transition: background 200ms ease-in-out, filter 300ms ease-in-out;
   cursor: pointer;
   overflow: hidden;
+
+  height: 8rem;
+  width: 8rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.253);
 }
 .hoverText {
   color: transparent;
@@ -103,12 +114,13 @@ link {
   text-align: center;
   z-index: 2;
   transition: background 80ms ease-in-out,
-    color 50ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    color 50ms cubic-bezier(0.075, 0.82, 0.165, 1), transform 100ms ease-in;
 }
 
 .category:hover {
   /* background-color: #8b8b8b; */
   z-index: 1;
+  transform: scale(1.1);
 }
 .category:hover > .categoryLabel {
   background: #8b8b8b00;
@@ -210,46 +222,73 @@ button:disabled:hover {
   height: 100%;
   width: 100%;
 }
-.collections {
+.collection__section {
   grid-area: collection;
+  margin: 5rem 0 5rem 0;
   display: grid;
-  grid-template-columns: 1fr;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  gap: 2rem;
+  place-content: center;
+  gap: 1rem;
+}
+.collections {
+  display: grid;
+  gap: 1rem;
+
+  grid-template-areas:
+    "newLaunch1"
+    "newLaunch2"
+    "newLaunch3";
 }
 .collection__heading {
-  grid-area: collectionHeading;
-  text-align: center;
+  text-align: left;
   margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 .collection {
   box-sizing: border-box;
   display: grid;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 100ms ease-in;
+  height: 10rem;
+}
+.collection:hover {
+  transform: scale(1.08);
+}
+.collection__heading,
+.category__heading {
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.308);
 
-  background-color: #c4c4c3;
-  gap: 1rem;
-  padding: 8rem;
-  width: 80%;
+  font-size: 2rem;
+}
+
+.newLaunches_1 {
+  grid-area: newLaunch1;
+  background-image: url("https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Beginner-Headphone-Banner-New-01.jpg?v=1681456334&width=1400");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.newLaunches_2 {
+  grid-area: newLaunch2;
+  background-image: url("https://cdn.shopify.com/s/files/1/0153/8863/files/headphone-zone-focal-banner-desktop.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.newLaunches_3 {
+  grid-area: newLaunch3;
+  background-image: url("https://cdn.shopify.com/s/files/1/0153/8863/files/hexa_laptop.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 Footer {
   grid-area: footer;
   width: 100%;
 }
 
-.homepage {
-  grid-template-areas:
-    "mainImage"
-    "categoryheading"
-    "category"
-    "collectionHeading"
-    "collection"
-    "footer";
-}
-
-.newLaunches_hexa {
+/* .newLaunches_hexa {
   background: url("https://cdn.shopify.com/s/files/1/0153/8863/files/hexa_laptop.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -278,41 +317,7 @@ Footer {
   font-weight: bold;
   border-radius: 10px;
   transition: all 200ms ease-in-out;
-}
-.newLaunches_focal {
-  background: url("https://cdn.shopify.com/s/files/1/0153/8863/files/headphone-zone-focal-banner-desktop.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
-  position: relative;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.newLaunches_focal:before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  padding: 2rem;
-  z-index: -1;
-  content: "New Launch";
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.288);
-  color: white;
-  font-weight: bold;
-  backdrop-filter: blur(5px);
-  border: 1px solid white;
-  border-radius: 10px;
-  transition: all 200ms ease-in-out;
-  box-shadow: 0.5rem 0.5rem 0.6rem rgba(0, 0, 0, 0.315);
-}
-.newLaunches_hexa:hover::before,
-.newLaunches_focal:hover::before {
-  backdrop-filter: blur(10px);
-}
+} */
 
 .gradient_background {
   background: #833ab4;
@@ -336,25 +341,75 @@ Footer {
   box-sizing: content-box;
 }
 
+/* Slogan Section */
+
+.slogan__section {
+  grid-area: slogan;
+  display: grid;
+  place-content: center;
+  width: 100%;
+}
+
+.slogan__box {
+  background-color: white;
+  padding: 3rem;
+  display: grid;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 80%;
+  justify-self: center;
+}
+.sub__slogan {
+  text-align: center;
+  width: 100%;
+}
+.main__slogan {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(90deg, #92e6d7 50%, #658df2 68.87%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-clip: text;
+  color: transparent;
+  text-transform: capitalize;
+  font-family: "Montserrat", sans-serif;
+}
+
+.homepage {
+  grid-template-areas:
+    "mainImage"
+    "category"
+    "slogan"
+    "collection"
+    "footer";
+}
+
 @media (min-width: 700px) {
   .homepage {
     /* max-width: 1200px; */
     padding: 0;
-  }
-  .collections {
-    grid-template-columns: 1fr 1fr;
   }
 
   .categories {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    max-width: 900px;
+    flex-wrap: wrap;
   }
   .category {
     width: 5rem;
     height: 5rem;
     padding: 5rem;
+    box-sizing: border-box;
+    height: 4.5rem;
+    width: 4.5rem;
   }
   .categoryLabel {
     font-size: 1rem;
@@ -383,30 +438,52 @@ Footer {
     padding-bottom: 3rem;
   }
   .collections {
-    grid-template-columns: 1fr 1fr;
-    max-width: 1340px;
-    justify-self: center;
-    justify-content: space-between;
+    grid-template-areas:
+      "newLaunch1 newLaunch2"
+      "newLaunch1 newLaunch3";
   }
+
+  .collections {
+    max-width: 900px;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2.5rem;
+    row-gap: 1.5rem;
+  }
+
+  .newLaunches_1 {
+    height: 250px;
+    width: 430px;
+  }
+
+  .newLaunches_2,
+  .newLaunches_3 {
+    height: 108px;
+    width: 430px;
+  }
+
   .collection__heading,
   .category__heading {
     text-transform: capitalize;
     font-weight: 800;
-    font-size: 3rem;
+    font-size: 1.2rem;
+  }
+  .category__heading {
+    width: 900px;
   }
 
   .categories {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     flex-wrap: wrap;
   }
   .category {
-    /* width: 8rem;
-    height: 8rem; */
-    padding: 7rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 4.5rem;
   }
   .categoryLabel {
     font-size: 1.5rem;
@@ -418,6 +495,18 @@ Footer {
   .mainImage::after {
     left: 50%;
     font-size: 5rem;
+  }
+  .slogan__box {
+    width: 900px;
+    border-radius: 1rem;
+    box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.25);
+    max-height: 180px;
+  }
+  .main__slogan {
+    font-size: 1.8rem;
+  }
+  .sub__slogan {
+    font-size: 1rem;
   }
 }
 

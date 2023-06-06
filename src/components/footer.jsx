@@ -3,12 +3,12 @@ export const Footer = () => {
   return (
     <footer className="mainFooter">
       <div className="row primary">
-        <div className="column about">
-          <h3>Connect</h3>
-          <p>
-            <i className="fa fa-map-marker" aria-hidden="true"></i>
-            NeoGCamp, India
-          </p>
+        <div
+          style={{ display: "flex", flexDirection: "column" }}
+          className="column about"
+        >
+          <h3>Djikstra E-Commerce</h3>
+          <p>Lorem ipsum dolor sit</p>
         </div>
         <div className="column link">
           <h3>Links</h3>
