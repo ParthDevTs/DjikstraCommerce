@@ -27,6 +27,6 @@ export const AddressDB = {
   ],
 };
 
-export const getAddresss = (email) => {
+export const GetUserAddress = (email) => {
   return AddressDB.data.filter((address) => address.person === email);
 };

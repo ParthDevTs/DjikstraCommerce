@@ -8,15 +8,8 @@ export const OrderConfirmation = () => {
   const navigate = useNavigate();
   const { orderProducts } = useCart();
   const { orderedAddress, orderArray } = orderProducts;
-  const {
-    id,
-    type,
-    addressLine1,
-    addressLine2,
-    city,
-    state,
-    pincode,
-  } = orderedAddress;
+  const { type, addressLine1, addressLine2, city, state, pincode } =
+    orderedAddress;
 
   return (
     <div className="checkOutPage">
@@ -48,7 +41,7 @@ export const OrderConfirmation = () => {
               </ul>
               {orderArray.length > 0 && (
                 <div className="orderedAddress">
-                  <div className="adddressItem" key={id}>
+                  <div className="adddressItem">
                     <h3 className="type">{type}</h3>
                     <p className="addressline add">
                       <b>{addressLine1}</b>

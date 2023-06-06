@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAddresss } from "../database/addressDb";
+import { GetUserAddress } from "../database/addressDb";
 import React from "react";
 import { useAuthContext } from "./authContext";
 import { v4 as uuid } from "uuid";
@@ -181,19 +181,24 @@ export const CartProvider = ({ children }) => {
   };
 
   const addAddress = (newAddress) => {
+    const unique_id = uuid();
     setAddress([
       ...address,
-      { ...newAddress, id: uuid(), person: localStorage.getItem("loginEmail") },
+      {
+        ...newAddress,
+        id: unique_id,
+        person: localStorage.getItem("loginEmail"),
+      },
     ]);
     toast(`${newAddress.type} added.`);
   };
 
-  const orderHandler = (selectedAddress) => {
-    let addressObj = address.find(({ id }) => (id = selectedAddress));
+  const orderHandler = (selectedObj) => {
+    let addressObj = address.find((add) => add.type === selectedObj);
     let orderArray = cartProducts;
 
     setOrdererdProduts({
-      orderedAddress: addressObj,
+      orderedAddress: addressObj ?? { ...address[0] },
       orderArray: orderArray,
     });
 
@@ -213,8 +218,8 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const getAddress = async () => {
       let email = localStorage.getItem("loginEmail");
-      let addressArray = await getAddresss(email);
-      setAddress(await addressArray);
+      let addressArray = GetUserAddress(email);
+      setAddress(addressArray);
     };
     getAddress();
   }, [isLoggedIn]);

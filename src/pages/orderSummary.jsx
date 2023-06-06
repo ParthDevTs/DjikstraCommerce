@@ -14,6 +14,7 @@ export const OrderSummary = () => {
     state: "",
     isDefault: false,
     pincode: "",
+    person: localStorage.getItem("loginEmail"),
   };
   const [userAddress, setUserAddress] = useState(addressObj);
   const navigate = useNavigate();
@@ -48,6 +49,8 @@ export const OrderSummary = () => {
                 type="text"
                 name="type"
                 id="type"
+                autoComplete="name"
+                maxLength={10}
               />
             </div>
             <div className="formField">
@@ -57,6 +60,7 @@ export const OrderSummary = () => {
                 value={userAddress.addressLine1}
                 type="text"
                 name="addressLine1"
+                autoComplete="addressLine1"
                 id="addressLine1"
               />
             </div>
@@ -67,6 +71,7 @@ export const OrderSummary = () => {
                 value={userAddress.addressLine2}
                 type="text"
                 name="addressLine2"
+                autoComplete="addressLine2"
                 id="addressLine2"
               />
             </div>
@@ -77,6 +82,7 @@ export const OrderSummary = () => {
                 value={userAddress.city}
                 type="text"
                 name="city"
+                autoComplete="city"
                 id="city"
               />
             </div>
@@ -87,6 +93,7 @@ export const OrderSummary = () => {
                 value={userAddress.state}
                 type="text"
                 name="state"
+                autoComplete="state"
                 id="state"
               />
             </div>
@@ -97,6 +104,7 @@ export const OrderSummary = () => {
                 value={userAddress.pincode}
                 type="text"
                 name="pincode"
+                autoComplete="pincode"
                 id="pincode"
               />
             </div>
@@ -104,9 +112,9 @@ export const OrderSummary = () => {
               <button
                 className="fancyButton"
                 onClick={() => {
+                  setUserAddress(addressObj);
                   addAddress(userAddress);
                   setDisplayAddAddress(false);
-                  setUserAddress(addressObj);
                 }}
                 disabled={userAddress.type.length === 0}
               >
@@ -139,7 +147,7 @@ export const OrderSummary = () => {
               } = address;
 
               return (
-                <li className="adddressItem" key={id}>
+                <li className="adddressItem" key={`${id + type}`}>
                   <h3 className="type">{type}</h3>
                   <p className="addressline add">
                     <b>{addressLine1}</b>
@@ -181,13 +189,14 @@ export const OrderSummary = () => {
                 onChange={handleSelectedAddress}
               >
                 <option></option>
-                {address.map((address) => {
+                {address.map((optionAddress) => {
                   return (
                     <option
                       className="address__selection__option"
-                      value={address.id}
+                      value={optionAddress.type}
+                      key={optionAddress.id}
                     >
-                      {address.type}
+                      {optionAddress.type}
                     </option>
                   );
                 })}
