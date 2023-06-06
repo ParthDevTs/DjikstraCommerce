@@ -29,11 +29,36 @@ export const Wishlist = () => {
           />
         </div>
       )}
-      <div className="wishlistMain">
-        {wishlist?.map((product) => {
-          return <ProductCard key={product._id} item={product} />;
-        })}
-      </div>
+      {wishlist.length === 0 && (
+        <div className="gif">
+          <div
+            className="gifbox"
+            style={{
+              width: "100%",
+              height: "100%",
+              paddingBottom: "56%",
+              position: "relative",
+            }}
+          >
+            <iframe
+              src="https://giphy.com/embed/g01ZnwAUvutuK8GIQn"
+              style={{ position: "relative" }}
+              frameBorder="0"
+              className="giphy-embed"
+              allowFullScreen
+              title="Searching GIf"
+            ></iframe>
+            <p>Why So Empty ?? &#128556;</p>
+          </div>
+        </div>
+      )}
+      {wishlist.length > 0 && (
+        <div className="wishlistMain">
+          {wishlist?.map((product) => {
+            return <ProductCard key={product._id} item={product} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };
