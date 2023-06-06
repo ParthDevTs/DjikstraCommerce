@@ -72,7 +72,8 @@ link {
   border-radius: 0.5rem;
   font-size: 0.8rem;
 
-  transition: background 200ms ease-in-out, filter 300ms ease-in-out;
+  transition: transform 100ms ease-in, background 200ms ease-in-out,
+    filter 300ms ease-in-out;
   cursor: pointer;
   overflow: hidden;
 
@@ -114,7 +115,7 @@ link {
   text-align: center;
   z-index: 2;
   transition: background 80ms ease-in-out,
-    color 50ms cubic-bezier(0.075, 0.82, 0.165, 1), transform 100ms ease-in;
+    color 50ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .category:hover {
@@ -287,37 +288,6 @@ Footer {
   grid-area: footer;
   width: 100%;
 }
-
-/* .newLaunches_hexa {
-  background: url("https://cdn.shopify.com/s/files/1/0153/8863/files/hexa_laptop.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
-  position: relative;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.newLaunches_hexa:before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  padding: 2rem;
-  z-index: -1;
-  content: "New Launch";
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.288);
-  color: white;
-  backdrop-filter: blur(5px);
-  border: 1px solid white;
-  font-weight: bold;
-  border-radius: 10px;
-  transition: all 200ms ease-in-out;
-} */
 
 .gradient_background {
   background: #833ab4;
