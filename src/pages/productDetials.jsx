@@ -6,6 +6,9 @@ import { Dna } from "react-loader-spinner";
 import "./css files/productDetails.css";
 import { useAuthContext } from "../context/authContext";
 import { FormattedNum } from "../components/formattedNum";
+import { toast } from "react-toastify";
+import wishlistbtnicon from "../assets/favorite.svg";
+import filledwishlistbtnicon from "../assets/favoritefilled.svg";
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
@@ -14,7 +17,7 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const { isLoggedIn } = useAuthContext();
   const { addToWishlist, addToCart, wishlist, removeFromWishlist } = useCart();
-  const [errorMessage, setErrorMessage] = useState(false);
+
   // eslint-disable-next-line
   useEffect(() => {
     const getProduct = async () => {
@@ -32,14 +35,16 @@ export const ProductDetails = () => {
 
   const [addtocart, setAddToCart] = useState("Add To Cart");
 
-  const { name, price, category, details, imgUrl, memory } = product;
+  const { name, price, category, details, imgUrl, memory, company, salePrice } =
+    product;
 
   let disabledWishlist =
     wishlist?.find((item) => product._id === item._id) !== undefined;
 
   const wishlistHandler = async () => {
     if (!isLoggedIn) {
-      setErrorMessage(true);
+      toast.error("Please login to use Wishlist");
+      navigate("/login");
     } else {
       !disabledWishlist
         ? await addToWishlist(product)
@@ -49,7 +54,8 @@ export const ProductDetails = () => {
 
   const addToCartHandler = async () => {
     if (!isLoggedIn) {
-      setErrorMessage(true);
+      toast.error("Please login to use Cart");
+      navigate("/login");
     } else {
       setAddToCart("Added ✓");
       await addToCart(product);
@@ -77,53 +83,74 @@ export const ProductDetails = () => {
       )}
       {!showLoader && (
         <div className="productDetailMainWindow">
-          <div className="imageWindow">
-            <img className="prodimage" src={imgUrl} alt="productImg" />
-          </div>
-          <div className="detailsWindow">
-            <h1>{name}</h1>
-            <h2 className="numbers">
-              <FormattedNum num={price} />
-            </h2>
-            <h3 style={{ color: "black" }}>
-              Category: <span style={{ color: "#2874f0" }}>{category}</span>
-            </h3>
-            {memory !== null ? (
-              <h2>
-                Memory: <span style={{ color: "#2874f0" }}>{memory}Gb</span>
-              </h2>
-            ) : null}
-            <p>{details}</p>
-            <div className="actionButton">
-              <button
-                onClick={addToCartHandler}
-                className="addToCartBtn prodAddToCart  btn"
-                // disabled={!isLoggedIn}
-              >
-                {addtocart}
-              </button>
+          <section className="product__detail__1">
+            <div className="imageWindow">
+              <img className="prodimage" src={imgUrl} alt="productImg" />
+            </div>
+            <div className="detailsWindow">
+              <div className="product__header">
+                <p className="product__company">{company}</p>
+                <h1 className="product__detail__name">{name}</h1>
+                <p className="product__category">
+                  <span style={{ color: "#2874f0" }}>{category}</span>
+                </p>
+                <div className="product__line"></div>
+              </div>
+              <p className="product__detail__price">
+                <span className="sale__price">
+                  <FormattedNum num={price} />
+                </span>
+                <span className="normal__price">
+                  {salePrice && <FormattedNum num={salePrice ?? 0} />}
+                </span>
+              </p>
+
+              <div className="product__action__Button">
+                <button
+                  onClick={addToCartHandler}
+                  className="product__add__cart__btn"
+                >
+                  {addtocart}
+                </button>
+
+                {/* <button
+                  onClick={() => navigate("/productList")}
+                  className="allProdBtn prodAddToCart btn"
+                >
+                  All Products
+                </button> */}
+              </div>
+
               <button
                 style={{
-                  background: disabledWishlist ? "red" : null,
                   color: disabledWishlist ? "white" : null,
                 }}
                 onClick={wishlistHandler}
-                className="wishListBtn prodAddToCart btn"
-                // disabled={!isLoggedIn}
+                className="product__detail__wishListBtn"
               >
-                {!disabledWishlist ? "Wish List" : "Wishlisted"}
-              </button>
-              <button
-                onClick={() => navigate("/productList")}
-                className="allProdBtn prodAddToCart btn"
-              >
-                All Products
+                {!disabledWishlist ? (
+                  <img src={wishlistbtnicon} alt="wishlist Button" />
+                ) : (
+                  <img src={filledwishlistbtnicon} alt="wishlist Button" />
+                )}
               </button>
             </div>
-            {errorMessage && (
-              <p className="error__message">Login To Continue</p>
-            )}
-          </div>
+          </section>
+          <section className="product__detail__2">
+            <p className="production__description__label">
+              Product Description
+            </p>
+            <p className="product__description">{details}</p>
+          </section>
+          {memory !== null ? (
+            <section className="product__detail__3">
+              <p className="product__specs__label ">Product Specification</p>
+
+              <p>
+                Memory: <span style={{ color: "#2874f0" }}>{memory}Gb</span>
+              </p>
+            </section>
+          ) : null}
         </div>
       )}
     </div>
