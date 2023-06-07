@@ -34,7 +34,7 @@ li {
   grid-template-columns: 1fr;
   width: 100%;
   background-color: white;
-  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.473);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 1rem;
   padding: 2rem;
 }

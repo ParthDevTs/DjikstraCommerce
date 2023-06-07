@@ -18,10 +18,16 @@ export const OrderConfirmation = () => {
           <Lottie animationData={shopping} loop={true} />
         </div>
         <div className="orderSummary">
-          <h1 className="gradient_background">Order Successful!</h1>{" "}
-          <p>
-            Your order is one the way! :D <br />
-            <br />
+          <h1 className="main__slogan">Order Successful!</h1>{" "}
+          <p
+            style={{
+              fontFamily: "montserrat",
+              marginBottom: "0.5rem",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            Your order is one the way! <br />
             Our happiness agents are on the way to deliver your order.
           </p>
           {orderArray.length > 0 && (
