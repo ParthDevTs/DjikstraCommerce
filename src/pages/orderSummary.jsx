@@ -53,7 +53,7 @@ export const OrderSummary = () => {
                 type="text"
                 name="type"
                 id="type"
-                autoComplete="name"
+                autoComplete="given-name"
                 maxLength={10}
               />
             </div>
@@ -64,8 +64,8 @@ export const OrderSummary = () => {
                 value={userAddress.addressLine1}
                 type="text"
                 name="addressLine1"
-                autoComplete="address line 1"
-                id="addressLine1"
+                autoComplete="street-address"
+                id="address-level1"
               />
             </div>
             <div className="formField">
@@ -75,8 +75,8 @@ export const OrderSummary = () => {
                 value={userAddress.addressLine2}
                 type="text"
                 name="addressLine2"
-                autoComplete="address line 2"
-                id="addressLine2"
+                autoComplete="street-address"
+                id="address-level2"
               />
             </div>
             <div className="formField">
@@ -86,7 +86,7 @@ export const OrderSummary = () => {
                 value={userAddress.city}
                 type="text"
                 name="city"
-                autoComplete="city"
+                autoComplete="address-level2"
                 id="city"
               />
             </div>
@@ -97,7 +97,7 @@ export const OrderSummary = () => {
                 value={userAddress.state}
                 type="text"
                 name="state"
-                autoComplete="state"
+                autoComplete="address-level1"
                 id="state"
               />
             </div>
@@ -108,7 +108,7 @@ export const OrderSummary = () => {
                 value={userAddress.pincode}
                 type="text"
                 name="pincode"
-                autoComplete="pincode"
+                autoComplete="postal-code"
                 id="pincode"
               />
             </div>
