@@ -276,3 +276,7 @@ link {
   text-align: center;
   font-size: 0.6rem;
 }
+
+.emptycart__img {
+  max-height: 10rem;
+}

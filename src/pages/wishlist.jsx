@@ -3,6 +3,7 @@ import { Dna } from "react-loader-spinner";
 import { ProductCard } from "../components/productCard";
 import "./css files/wishlist.css";
 import { useCart } from "../context/CartContext";
+import shopping__svg from "../assets/shopping_undraw.svg";
 
 export const Wishlist = () => {
   const { getWishlist, wishlist, showLoader } = useCart();
@@ -15,7 +16,31 @@ export const Wishlist = () => {
 
   return (
     <div className="wishlist">
-      <h1 className=" wishlistHeading  ">Wishlist</h1>
+      {wishlist.length > 0 && <h1 className="main__slogan">Wishlist</h1>}
+      {wishlist.length === 0 && (
+        <div className="gif">
+          <div
+            style={{
+              paddingBottom: "56%",
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "10rem",
+              flexDirection: "column",
+              gap: "2rem",
+            }}
+          >
+            <h1 className="main__slogan ">Why So Empty ?</h1>
+            <img
+              src={shopping__svg}
+              className="emptycart__img"
+              alt="shopping"
+            />
+          </div>
+        </div>
+      )}
+
       {showLoader && (
         <div className="spinner-box">
           <Dna
@@ -29,29 +54,7 @@ export const Wishlist = () => {
           />
         </div>
       )}
-      {wishlist.length === 0 && (
-        <div className="gif">
-          <div
-            className="gifbox"
-            style={{
-              width: "100%",
-              height: "100%",
-              paddingBottom: "56%",
-              position: "relative",
-            }}
-          >
-            <iframe
-              src="https://giphy.com/embed/g01ZnwAUvutuK8GIQn"
-              style={{ position: "relative" }}
-              frameBorder="0"
-              className="giphy-embed"
-              allowFullScreen
-              title="Searching GIf"
-            ></iframe>
-            <p>Why So Empty ?? &#128556;</p>
-          </div>
-        </div>
-      )}
+
       {wishlist.length > 0 && (
         <div className="wishlistMain">
           {wishlist?.map((product) => {

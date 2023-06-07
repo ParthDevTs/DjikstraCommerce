@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "./styles/productCard.css";
 import { useAuthContext } from "../context/authContext";
+import { FormattedNum } from "./formattedNum";
 
 export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
@@ -52,14 +53,10 @@ export const ProductCard = ({ item }) => {
         {name}
       </h3>
       <div className="content">
-        <span
-          className="numbers"
-          style={{ fontWeight: "bold", fontSize: "1rem" }}
-        >{`Rs. ${price}`}</span>
-        <span style={{ color: "#2874f0", fontSize: "0.8rem" }}>{category}</span>
-        <Link className="infoLink" to={`/productList/${_id}`}>
-          &#9432; more info
-        </Link>{" "}
+        <span className="numbers" style={{ fontWeight: "bold" }}>
+          <FormattedNum num={price} />
+        </span>
+        <span style={{ color: "#2874f0" }}>{category}</span>
       </div>
       <div className="newLaunch">{item.newLaunch ? "New Launch" : ""}</div>
       <footer>

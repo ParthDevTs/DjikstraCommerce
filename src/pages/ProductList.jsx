@@ -17,6 +17,7 @@ export const ProductList = () => {
     SetFilteredPrice(event.target.value);
   };
 
+
   const sortList = (a, b) => {
     switch (listsort) {
       case "a-z":

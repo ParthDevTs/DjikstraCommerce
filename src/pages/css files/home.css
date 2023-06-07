@@ -195,7 +195,7 @@ link {
   font-size: 0.7rem;
   box-sizing: border-box;
   background-color: transparent;
-  color: #fcb045;
+  color: #658df2;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   margin-top: 0.5rem;
   /* border-radius: 0.5rem; */
@@ -203,11 +203,11 @@ link {
   font-family: "Montserrat", sans-serif;
   border: none;
   cursor: pointer;
-  border-bottom: 1px solid #fcb045;
+  border-bottom: 1px solid #658df2;
   transition: border 100ms ease-in-out, background 200ms ease-in;
 }
 .fancyButton:hover {
-  background: #fcb045;
+  background: #658df2;
   border-bottom: 1px solid white;
   color: white;
 }

@@ -3,6 +3,8 @@ import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Dna } from "react-loader-spinner";
 import "./css files/cart.css";
+import { FormattedNum } from "../components/formattedNum";
+import shopping__svg from "../assets/shopping_undraw.svg";
 
 export const Cart = () => {
   const {
@@ -16,6 +18,7 @@ export const Cart = () => {
     updateCartItem,
     cartValue,
   } = useCart();
+
   const [dynamicCartValue, setDynamicCartValue] = useState(cartValue);
 
   // eslint-disable-next-line
@@ -80,17 +83,15 @@ export const Cart = () => {
               justifyContent: "center",
               marginTop: "10rem",
               flexDirection: "column",
+              gap: "2rem",
             }}
           >
-            <iframe
-              src="https://giphy.com/embed/g01ZnwAUvutuK8GIQn"
-              style={{ position: "relative" }}
-              frameBorder="0"
-              className="giphy-embed"
-              allowFullScreen
-              title="Searching GIf"
-            ></iframe>
-            <p>Why So Empty ?? &#128556;</p>
+            <h1 className="main__slogan">Why So Empty ?</h1>
+            <img
+              className="emptycart__img"
+              src={shopping__svg}
+              alt="shopping"
+            />
           </div>
         </div>
       )}
@@ -99,8 +100,9 @@ export const Cart = () => {
           <div className="total">
             <h2>Total Amount</h2>
             <p className="totalValue numbers">
-              {`Rs.
-            ${dynamicCartValue ?? 0}`}
+              {/* {`Rs.
+            ${dynamicCartValue ?? 0}`} */}
+              <FormattedNum num={dynamicCartValue ?? 0} />
             </p>
             <div className="actionItems">
               <button
@@ -184,7 +186,9 @@ export const Cart = () => {
                         </div>
                       </div>
 
-                      <div className="pricing numbers">Rs.{price}</div>
+                      <div className="pricing numbers">
+                        <FormattedNum num={price} />
+                      </div>
                     </div>
                     <div className="specs">{details}</div>
                     <div className="Link">

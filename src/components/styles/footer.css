@@ -30,7 +30,7 @@
   min-height: 10em;
 }
 .column > h3 {
-  color: #c7940a;
+  color: #658df2;
   text-align: left;
 }
 .column > p {
@@ -46,7 +46,7 @@
 .link > h3 {
   width: 100%;
   text-align: left;
-  color: #c7940a;
+  color: #658df2;
 }
 .link > ul {
   list-style: none;
@@ -68,7 +68,7 @@
   gap: 0.5rem;
 } */
 .link > ul li a:hover {
-  color: #c7940a;
+  color: #658df2;
 }
 .about p {
   text-align: justify;
@@ -84,7 +84,7 @@
   margin-bottom: 5px;
 }
 .subscribe > div > button {
-  background-color: #c7940a;
+  background-color: #658df2;
   color: #ffffff;
 }
 div.social {
@@ -112,7 +112,7 @@ div.social {
 }
 .footer-menu a:hover,
 .social i:hover {
-  color: #c7940a;
+  color: #658df2;
 }
 .copyright p {
   font-size: 0.9em;
