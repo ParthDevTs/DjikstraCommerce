@@ -176,7 +176,9 @@ export const OrderSummary = () => {
                       disabled={selectedAddress.id === address.id}
                       onClick={() => setSelectedAddress(address)}
                     >
-                      Select Address
+                      {selectedAddress.id === address.id
+                        ? "Address Selected"
+                        : "Select Address "}
                     </button>
                   </div>
                 </li>
