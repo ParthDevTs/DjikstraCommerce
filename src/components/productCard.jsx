@@ -7,7 +7,7 @@ import { FormattedNum } from "./formattedNum";
 
 export const ProductCard = ({ item }) => {
   const { addToCart, addToWishlist, removeFromWishlist, wishlist } = useCart();
-  const { _id, name, price, category, imgUrl } = item;
+  const { _id, name, price, category, imgUrl, salePrice } = item;
   const [addToCartLabel, setAddToCartLabel] = useState("Add To Cart");
   const [errorMessage, setErrorMessage] = useState(false);
   const { isLoggedIn } = useAuthContext();
@@ -78,6 +78,7 @@ export const ProductCard = ({ item }) => {
         </button>
         {errorMessage && <p className="error__message">Login To Continue</p>}
       </footer>
+      {salePrice && <div className="sale__badge">Sale</div>}
     </li>
   );
 };

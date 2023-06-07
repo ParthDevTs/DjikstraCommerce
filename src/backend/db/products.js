@@ -157,7 +157,7 @@ export const products = [
     _id: uuid(),
     name: "iPad Pro",
     price: 121990,
-    salePrice: "",
+    salePrice: "120000",
     company: "Apple",
     memory: 128,
     currency: "INR",

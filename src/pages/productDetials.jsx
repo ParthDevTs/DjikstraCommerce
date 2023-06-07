@@ -96,14 +96,23 @@ export const ProductDetails = () => {
                 </p>
                 <div className="product__line"></div>
               </div>
-              <p className="product__detail__price">
-                <span className="sale__price">
-                  <FormattedNum num={price} />
-                </span>
-                <span className="normal__price">
-                  {salePrice && <FormattedNum num={salePrice ?? 0} />}
-                </span>
-              </p>
+              {salePrice && (
+                <p className="product__detail__price">
+                  <span className="sale__price">
+                    <FormattedNum num={salePrice ?? 0} />
+                  </span>
+                  <span className="normal__price">
+                    <FormattedNum num={price} />
+                  </span>
+                </p>
+              )}
+              {!salePrice && (
+                <p className="product__detail__price">
+                  <span className="sale__price">
+                    <FormattedNum num={price} />
+                  </span>
+                </p>
+              )}
 
               <div className="product__action__Button">
                 <button
@@ -112,13 +121,6 @@ export const ProductDetails = () => {
                 >
                   {addtocart}
                 </button>
-
-                {/* <button
-                  onClick={() => navigate("/productList")}
-                  className="allProdBtn prodAddToCart btn"
-                >
-                  All Products
-                </button> */}
               </div>
 
               <button
@@ -135,6 +137,7 @@ export const ProductDetails = () => {
                 )}
               </button>
             </div>
+            {salePrice && <div className="sale__badge">Sale</div>}
           </section>
           <section className="product__detail__2">
             <p className="production__description__label">
