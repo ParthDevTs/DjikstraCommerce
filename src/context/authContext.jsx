@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
     resetCounters();
     setIsLoggedIn(false);
     localStorage.removeItem("encodedToken");
-    toast.success("Logged Out In Successfully");
+    toast.info("Logged Out In Successfully");
   };
 
   return (

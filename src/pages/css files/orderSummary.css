@@ -7,6 +7,7 @@
   min-height: calc(100vh - 5rem);
   position: relative;
   z-index: 1;
+  padding: 3rem 0;
 }
 .orderSummary {
   max-width: 1280px;
@@ -17,43 +18,56 @@
 }
 .order {
   background: white;
-  padding: 2rem;
-  /* display: grid; */
-  gap: 3rem;
-  border-radius: 1rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.order > h1 {
-  text-align: center;
+.order > .header {
+  text-align: left;
+  border-bottom: 1px black solid;
+  padding: 1rem 0.5rem;
 }
+.order > .orderDetails {
+  width: 100%;
+  border-bottom: 1px black solid;
+}
+.order > .totalCharges {
+  width: 100%;
+  border-bottom: 1px black solid;
+}
+
 .order > footer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.orderDetails {
-  display: grid;
-  padding: 2rem;
   place-content: center;
-  gap: 1rem;
+  padding: 1rem 0.2rem;
   width: 100%;
 }
-.orderDetails > div {
+
+.cart__value {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  justify-self: stretch;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  column-gap: 1rem;
   align-items: center;
-  border-bottom: 1px solid #fcb045;
-  padding: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  height: 5.125rem;
 }
-.orderDetails > div :first-child {
-  color: #979797;
-
-  padding-right: 1rem;
+.cart__value > p {
+  text-align: center;
 }
-.orderDetails > div :nth-child(2) {
-  font-size: 1.2rem;
+.totalCharges > .charges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 0.3rem;
 }
-
+.charges > p {
+  text-align: center;
+}
+.confirm__button {
+  height: 2rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  width: 100%;
+}
 .addressPopout {
   position: absolute;
   height: 100%;
@@ -80,7 +94,6 @@
   margin-bottom: 1rem;
 }
 .add__address__page > .formField > input {
-  border: #fcb045 solid 1px;
   border-radius: 10px;
 }
 
@@ -100,30 +113,45 @@
   justify-content: start;
 }
 
-.allAddresses {
-  box-sizing: border-box;
-  max-height: 60vh;
-  overflow-y: scroll;
-  width: 100%;
-}
 .addAddress {
-  padding: 1rem;
   display: grid;
-  place-content: center;
+}
+.add__new__add_btn {
+  border-radius: 0;
+  height: 2.6rem;
+  background: #5e5df0;
+  /* border-radius: 999px; */
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+
+  font-weight: 700;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  /* width: fit-content; */
+  word-break: break-word;
+  border: 0;
+}
+.add__new__add_btn:hover {
+  transform: scale(1.05);
 }
 .addressList {
   display: grid;
   place-content: center;
+  gap: 2rem;
 }
 .addressList > h3 {
   text-align: center;
   margin: 2rem;
-}
-.addAddress > button {
-  padding: 1rem;
-  color: #fcb045;
-  background: white;
-  border-radius: 1rem;
 }
 
 .addressSelection {
@@ -133,24 +161,173 @@
   font-size: 1rem;
 }
 
+.allAddresses {
+  box-sizing: border-box;
+  height: 55vh;
+  overflow-y: scroll;
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+}
+
+.order__summary__address {
+  width: 21rem;
+  height: 13.8rem;
+  background: #afafaf;
+  padding: 1.39rem 2.8rem;
+  color: white;
+  display: grid;
+  gap: 0.5rem;
+  position: relative;
+  font-family: var(--primaryFont);
+}
+.order__summary__address > h3 {
+  text-transform: capitalize;
+}
+.order__summary__address > .order__address {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+}
+.order__summary__address > .footer {
+  display: grid;
+}
+.order__summary__address > .footer > button {
+  background: #5e5df0;
+
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+
+  font-weight: 700;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  word-break: break-word;
+  border: 0;
+}
+.order__summary__address > .defaultAdd {
+  box-shadow: 0 4px 4px black;
+}
+.order__summary__address > .footer > button:hover {
+  transform: scale(1.03);
+}
+.order__summary__address > .footer > button:disabled {
+  background: gray;
+  color: lightgray;
+  cursor: unset;
+}
+.button-blue {
+  background: #5e5df0;
+  /* border-radius: 999px; */
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+
+  font-weight: 700;
+
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  transition: all 100ms ease-in;
+}
+.button-blue:hover {
+  transform: scale(1.05);
+}
 @media (min-width: 700px) {
   .orderSummary {
-    grid-template-columns: 1fr 2fr;
-    align-items: self-start;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
   }
   .order {
-    margin-top: 3rem;
+    /* height: 31.25rem; */
+    height: 24rem;
+    width: 30rem;
+  }
+  .order > .header {
+    height: 4.25rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1.3rem;
   }
   .orderDetails {
-    padding: 0.5rem 1rem 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 17.8rem; */
+    height: 12rem;
+    grid-template-columns: 1fr;
   }
-  .orderDetails > div {
+  .cart__value {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    row-gap: 2.56rem;
+    column-gap: 9.68rem;
+    align-items: center;
+    justify-content: unset;
+    height: 5.125rem;
+    width: unset;
   }
-  .orderDetails > div :first-child {
-    border-right: 1px solid #fcb045;
+  .cart__value > p {
+    font-size: 1rem;
+    text-align: left;
   }
+
+  .totalCharges {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 4.3rem;
+    width: 100%;
+  }
+  .totalCharges > .charges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 11.53rem;
+    align-items: center;
+    justify-content: center;
+    padding: unset;
+  }
+  .charges > p {
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .confirm__button {
+    width: 24.367rem;
+  }
+  /* CSS */
+
+  .order > footer {
+    height: 3.5rem;
+    padding: unset;
+  }
+
   .add__address__page > .formField {
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -160,8 +337,7 @@
   }
   .add__address__page > footer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-content: stretch;
+    grid-template-columns: 1fr;
   }
   .closeAddress {
     top: 1%;

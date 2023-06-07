@@ -195,7 +195,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const orderHandler = (selectedObj) => {
-    let addressObj = address.find((add) => add.type === selectedObj);
+    let addressObj = address.find((add) => add.id === selectedObj.id);
     let orderArray = cartProducts;
 
     setOrdererdProduts({

@@ -5,6 +5,7 @@ import { useCart } from "../context/CartContext";
 import { Dna } from "react-loader-spinner";
 import "./css files/productDetails.css";
 import { useAuthContext } from "../context/authContext";
+import { FormattedNum } from "../components/formattedNum";
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
@@ -81,7 +82,9 @@ export const ProductDetails = () => {
           </div>
           <div className="detailsWindow">
             <h1>{name}</h1>
-            <h2 className="numbers">Rs. {price}</h2>
+            <h2 className="numbers">
+              <FormattedNum num={price} />
+            </h2>
             <h3 style={{ color: "black" }}>
               Category: <span style={{ color: "#2874f0" }}>{category}</span>
             </h3>

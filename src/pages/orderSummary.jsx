@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "./css files/orderSummary.css";
 import { useNavigate } from "react-router-dom";
+import { FormattedNum } from "../components/formattedNum";
 export const OrderSummary = () => {
-  const { address, cartValue, addAddress, orderHandler } = useCart();
+  const { address, cartValue, addAddress, orderHandler, cartProducts } =
+    useCart();
   const [displayAddAddress, setDisplayAddAddress] = useState(false);
-  const [selectedAddress, setSelectedAddress] = useState();
+  const [selectedAddress, setSelectedAddress] = useState(address[0]);
+  const addressList = address;
   const addressObj = {
     type: "",
     addressLine1: "",
@@ -16,16 +19,17 @@ export const OrderSummary = () => {
     pincode: "",
     person: localStorage.getItem("loginEmail"),
   };
-  const [userAddress, setUserAddress] = useState(addressObj);
+
+  const itemsNum = cartProducts?.reduce((total, curr) => total + curr.qty, 0);
+
   const navigate = useNavigate();
+
+  //Address Logic
+  const [userAddress, setUserAddress] = useState(addressObj);
   const addressHandler = (event) => {
     const value = event.target.value;
     const name = event.target.name;
     setUserAddress({ ...userAddress, [name]: value });
-  };
-
-  const handleSelectedAddress = (event) => {
-    setSelectedAddress(event.target.value);
   };
 
   return (
@@ -132,9 +136,17 @@ export const OrderSummary = () => {
       )}
       <div className="orderSummary">
         <div className="addressList ">
-          <h3 className="gradient_background">Saved Addresses</h3>
+          <div className="addAddress">
+            <button
+              className="add__new__add_btn"
+              onClick={() => setDisplayAddAddress(true)}
+            >
+              Add New Address
+            </button>
+          </div>
+
           <ul className="allAddresses">
-            {address.map((address) => {
+            {addressList.map((address) => {
               const {
                 id,
                 type,
@@ -147,72 +159,54 @@ export const OrderSummary = () => {
               } = address;
 
               return (
-                <li className="adddressItem" key={`${id + type}`}>
+                <li className="order__summary__address" key={`${id + type}`}>
                   <h3 className="type">{type}</h3>
-                  <p className="addressline add">
-                    <b>{addressLine1}</b>
-                  </p>
-                  {addressLine2 && (
-                    <p className="addressline add">
-                      <b>{addressLine2}</b>
-                    </p>
-                  )}
-                  <p className="city add">
-                    <b>City:</b> {city}
-                  </p>
-                  <p className="city add">
-                    <b>State:</b> {state}
-                  </p>
-                  <p className="pincode add">
-                    <b>Pincode:</b> {pincode}
-                  </p>
+                  <div className="order__address">
+                    <p className="order__addressline add">{addressLine1}</p>
+                    {addressLine2.length > 0 && (
+                      <p className="order__addressline add">{addressLine2}</p>
+                    )}
+                    <p className="order__city add">{city}</p>
+                    <p className="order__city add">{state}</p>
+                    <p className="order__pincode add">{pincode}</p>
+                  </div>
                   {isDefault && <div className="defaultAdd">Default</div>}
+                  <div className="footer">
+                    <button
+                      disabled={selectedAddress.id === address.id}
+                      onClick={() => setSelectedAddress(address)}
+                    >
+                      Select Address
+                    </button>
+                  </div>
                 </li>
               );
             })}
           </ul>
-          <div className="addAddress">
-            <button onClick={() => setDisplayAddAddress(true)}>
-              Add New Address
-            </button>
-          </div>
         </div>
         <div className="order">
-          <h3 className="gradient_background">Order Summary</h3>
+          <div className="header">
+            <h3>Order Summary</h3>
+          </div>
           <div className="orderDetails">
-            <div className="totalCharges">
-              <p>Select Address </p>
-              <select
-                className="addressSelection"
-                name="address__selection"
-                id="address__selection"
-                onChange={handleSelectedAddress}
-              >
-                <option></option>
-                {address.map((optionAddress) => {
-                  return (
-                    <option
-                      className="address__selection__option"
-                      value={optionAddress.type}
-                      key={optionAddress.id}
-                    >
-                      {optionAddress.type}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
             <div className="cart__value">
-              <p>Cart Value</p>
-              <p className="numbers">Rs. {cartValue}</p>
-            </div>
-            <div className="shipping__charges">
+              <p>Cart items x {itemsNum}</p>
+              <p className="numbers">
+                <FormattedNum num={cartValue} />
+              </p>
               <p>Shipping Charges</p>
-              <p className="numbers">Rs. 250</p>
+              <p className="numbers">
+                <FormattedNum num={250} />
+              </p>
             </div>
-            <div className="totalCharges">
+          </div>
+          <div className="totalCharges">
+            <div className="charges">
               <p>Total Charges </p>
-              <p className="numbers">Rs. {cartValue + 250}</p>
+              <p className="numbers">
+                {" "}
+                <FormattedNum num={cartValue + 250} />
+              </p>
             </div>
           </div>
           <footer>
@@ -221,12 +215,9 @@ export const OrderSummary = () => {
                 orderHandler(selectedAddress);
                 navigate("/orderConfirmation");
               }}
-              className="fancyButton"
+              className="confirm__button button-blue"
             >
-              Buy Now
-            </button>
-            <button onClick={() => navigate("/cart")} className="fancyButton">
-              Cancel
+              Place Order
             </button>
           </footer>
         </div>
